@@ -205,20 +205,11 @@ function processChatState(input) {
           }
         });
       } else {
-        // Try to match a brand
-        const matchedBrand = BRANDS.find(b => b.toLowerCase() === lowerInput);
-        if (matchedBrand) {
-          userData.brand = matchedBrand;
-          currentChatState = 2;
-          addBotMessageWithTyping(`Great choice! A ${matchedBrand} device. What seems to be the issue?`, () => {
-            renderQuickReplies(REPAIR_ISSUES.map(i => i.name));
-          });
-        } else {
-          currentChatState = 1;
-          addBotMessageWithTyping("No problem! What brand of device are you working with?", () => {
-            renderQuickReplies(BRANDS);
-          });
-        }
+        // No brand or issue detected — ask what device they have
+        currentChatState = 1;
+        addBotMessageWithTyping("No problem! What brand of device are you working with?", () => {
+          renderQuickReplies(BRANDS);
+        });
       }
       break;
 
@@ -226,21 +217,26 @@ function processChatState(input) {
       const matchedBrand2 = BRANDS.find(b => b.toLowerCase() === sanitized.toLowerCase());
       if (matchedBrand2) {
         userData.brand = matchedBrand2;
-        currentChatState = 2;
-        addBotMessageWithTyping(`Awesome! A ${userData.brand} device. What's the problem you're experiencing?`, () => {
-          renderQuickReplies(REPAIR_ISSUES.map(i => i.name));
-        });
       } else {
         userData.brand = sanitized;
+      }
+      // If we already have the issue, skip to city
+      if (userData.issue) {
+        currentChatState = 3;
+        addBotMessageWithTyping(`Got it! ${userData.brand} with a ${userData.issueName || 'repair'} issue. Which city are you in?`, () => {
+          renderQuickReplies(Object.keys(CITY_COORDS));
+        });
+      } else {
         currentChatState = 2;
-        addBotMessageWithTyping("I've noted that brand. What issue are you experiencing?", () => {
+        addBotMessageWithTyping(`Awesome! A ${userData.brand} device. What's the problem you're experiencing?`, () => {
           renderQuickReplies(REPAIR_ISSUES.map(i => i.name));
         });
       }
       break;
 
     case 2: // ISSUE
-      const matchedIssue = REPAIR_ISSUES.find(i => i.name.toLowerCase().includes(lowerInput) || lowerInput.includes(i.id));
+      const lowerIssueInput = sanitized.toLowerCase();
+      const matchedIssue = REPAIR_ISSUES.find(i => i.name.toLowerCase().includes(lowerIssueInput) || lowerIssueInput.includes(i.id));
       if (matchedIssue) {
         userData.issue = matchedIssue.id;
         userData.issueName = matchedIssue.name;
@@ -255,7 +251,8 @@ function processChatState(input) {
       break;
 
     case 3: // CITY
-      const matchedCity = Object.keys(CITY_COORDS).find(c => c.toLowerCase() === lowerInput);
+      const lowerCityInput = sanitized.toLowerCase();
+      const matchedCity = Object.keys(CITY_COORDS).find(c => c.toLowerCase() === lowerCityInput);
       userData.city = matchedCity || 'Harare';
       currentChatState = 4;
       addBotMessageWithTyping("Perfect! What's your approximate budget for the repair?", () => {
