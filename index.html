@@ -86,8 +86,8 @@
                 <a href="#search" class="btn btn-primary btn-glow btn-lg">
                   <i data-lucide="search" style="width:18px;height:18px;"></i> Find A Technician
                 </a>
-                <button class="btn btn-secondary btn-lg" onclick="openKayaChat(true)">
-                  <i data-lucide="sparkles" style="width:18px;height:18px;"></i> Talk To Kaya
+                <button class="btn btn-secondary btn-lg" onclick="openMendieChat(true)">
+                  <i data-lucide="sparkles" style="width:18px;height:18px;"></i> Talk To Mendie
                 </button>
               </div>
               <div class="hero-trust-row fade-up">
@@ -141,9 +141,9 @@
             <div class="step-card fade-up">
               <div class="step-number">02</div>
               <div class="step-icon-wrapper"><i data-lucide="sparkles"></i></div>
-              <h3 class="step-title">Talk To Kaya</h3>
+              <h3 class="step-title">Talk To Mendie</h3>
               <p class="step-desc">Our AI assistant helps identify the issue and recommends the best repair options near you.</p>
-              <button class="step-cta" onclick="openKayaChat(true)">Ask Kaya <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+              <button class="step-cta" onclick="openMendieChat(true)">Ask Mendie <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
             </div>
             <div class="step-card fade-up">
               <div class="step-number">03</div>
@@ -259,8 +259,8 @@
           </div>
           <div class="faq-list">
             <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>How does Kaya work?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Kaya is our AI repair assistant. Simply tell her what's wrong with your device — like "my screen is cracked" or "my phone won't charge" — and she'll help diagnose the problem, estimate costs, and connect you with the best technician near you.</p></div>
+              <div class="faq-question"><span>How does Mendie work?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
+              <div class="faq-answer"><p>Mendie is our AI repair assistant. Simply tell her what's wrong with your device — like "my screen is cracked" or "my phone won't charge" — and she'll help diagnose the problem, estimate costs, and connect you with the best technician near you.</p></div>
             </div>
             <div class="faq-item" onclick="toggleFaq(this)">
               <div class="faq-question"><span>How do I find a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
@@ -398,31 +398,31 @@
       </div>
     </footer>
 
-    <!-- KAYA CHATBOT -->
-    <div class="kaya-bubble-container">
-      <div class="kaya-bubble" onclick="toggleKayaChat()" id="kaya-trigger-bubble">
-        <i data-lucide="sparkles" id="kaya-bubble-icon"></i>
-        <div class="kaya-badge" id="kaya-unread" style="display:none;">1</div>
-        <div class="kaya-ping-text" id="kaya-ping-bubble">Ask Kaya</div>
+    <!-- MENDIE CHATBOT -->
+    <div class="mendie-bubble-container">
+      <div class="mendie-bubble" onclick="toggleMendieChat()" id="mendie-trigger-bubble">
+        <i data-lucide="sparkles" id="mendie-bubble-icon"></i>
+        <div class="mendie-badge" id="mendie-unread" style="display:none;">1</div>
+        <div class="mendie-ping-text" id="mendie-ping-bubble">Ask Mendie</div>
       </div>
-      <div class="kaya-chat-panel" id="kaya-chat-box">
-        <div class="kaya-chat-header">
-          <div class="kaya-chat-header-user">
-            <div class="kaya-chat-avatar">
+      <div class="mendie-chat-panel" id="mendie-chat-box">
+        <div class="mendie-chat-header">
+          <div class="mendie-chat-header-user">
+            <div class="mendie-chat-avatar">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <div class="kaya-chat-header-text">
-              <h4>Kaya</h4>
-              <p><span class="kaya-status-dot"></span> Online now</p>
+            <div class="mendie-chat-header-text">
+              <h4>Mendie</h4>
+              <p><span class="mendie-status-dot"></span> Online now</p>
             </div>
           </div>
-          <button class="kaya-chat-close" onclick="toggleKayaChat()"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
+          <button class="mendie-chat-close" onclick="toggleMendieChat()"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
         </div>
-        <div class="kaya-chat-messages" id="kaya-messages-log"></div>
-        <div class="chat-quick-replies" id="kaya-quick-replies-mount"></div>
-        <div class="kaya-chat-input-bar">
-          <input type="text" placeholder="Tell Kaya what's wrong..." id="kaya-input" onkeypress="handleKayaKeyPress(event)">
-          <button onclick="sendKayaMessage()" title="Send"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
+        <div class="mendie-chat-messages" id="mendie-messages-log"></div>
+        <div class="chat-quick-replies" id="mendie-quick-replies-mount"></div>
+        <div class="mendie-chat-input-bar">
+          <input type="text" placeholder="tell me what's wrong..." id="mendie-input" onkeypress="handleMendieKeyPress(event)">
+          <button onclick="sendMendieMessage()" title="Send"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
         </div>
       </div>
     </div>

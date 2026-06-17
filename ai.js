@@ -1,13 +1,13 @@
-// FundiFix — Kaya AI Assistant (Alive, Friendly, Smart)
+// FundiFix — Mendie AI Assistant (Alive, Friendly, Smart)
 
-const KAYA_GREETINGS = [
+const MENDIE_GREETINGS = [
   "Need help fixing your device? 👋",
   "Cracked screen? I can help! 💪",
-  "Tell Kaya what's broken 🔧",
+  "Tell Mendie what's broken 🔧",
   "Quick diagnosis, right here ✨"
 ];
 
-const KAYA_INITIAL_SUGGESTIONS = [
+const MENDIE_INITIAL_SUGGESTIONS = [
   "My screen is cracked",
   "My phone won't charge",
   "My battery drains quickly",
@@ -20,69 +20,69 @@ let currentChatState = 0;
 let userData = { brand: '', model: '', issue: '', city: '', budget: 0 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  initKayaBubble();
+  initMendieBubble();
 });
 
-function initKayaBubble() {
-  const ping = document.getElementById('kaya-ping-bubble');
+function initMendieBubble() {
+  const ping = document.getElementById('mendie-ping-bubble');
   let pingIndex = 0;
   setInterval(() => {
-    pingIndex = (pingIndex + 1) % KAYA_GREETINGS.length;
-    ping.textContent = KAYA_GREETINGS[pingIndex];
+    pingIndex = (pingIndex + 1) % MENDIE_GREETINGS.length;
+    ping.textContent = MENDIE_GREETINGS[pingIndex];
   }, 8000);
 }
 
-function toggleKayaChat() {
-  const panel = document.getElementById('kaya-chat-box');
-  const unread = document.getElementById('kaya-unread');
+function toggleMendieChat() {
+  const panel = document.getElementById('mendie-chat-box');
+  const unread = document.getElementById('mendie-unread');
   panel.classList.toggle('active');
   unread.style.display = 'none';
   if (panel.classList.contains('active')) {
-    document.getElementById('kaya-input').focus();
+    document.getElementById('mendie-input').focus();
     scrollChatBottom();
     if (chatHistory.length === 0) {
-      resetKayaConversation();
+      resetMendieConversation();
     }
   }
 }
 
-function openKayaChat(directLink = false) {
-  const panel = document.getElementById('kaya-chat-box');
+function openMendieChat(directLink = false) {
+  const panel = document.getElementById('mendie-chat-box');
   panel.classList.add('active');
-  document.getElementById('kaya-unread').style.display = 'none';
+  document.getElementById('mendie-unread').style.display = 'none';
   if (directLink || chatHistory.length === 0) {
-    resetKayaConversation();
+    resetMendieConversation();
   }
-  setTimeout(() => document.getElementById('kaya-input').focus(), 100);
+  setTimeout(() => document.getElementById('mendie-input').focus(), 100);
 }
 
 function scrollChatBottom() {
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   setTimeout(() => { log.scrollTop = log.scrollHeight; }, 50);
 }
 
-function resetKayaConversation() {
+function resetMendieConversation() {
   chatHistory = [];
   currentChatState = 0;
   userData = { brand: '', model: '', issue: '', city: '', budget: 0 };
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   log.innerHTML = '';
 
-  addBotMessageWithTyping("Hi there! 👋 I'm Kaya, your repair assistant.", () => {
+  addBotMessageWithTyping("Hi there! 👋 I'm Mendie, your repair assistant.", () => {
     setTimeout(() => {
       addBotMessage("Tell me what's wrong with your device and I'll help you figure out the problem and find the best repair expert near you.");
-      renderQuickReplies(KAYA_INITIAL_SUGGESTIONS);
+      renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
     }, 600);
   });
 }
 
 function addBotMessageWithTyping(text, callback) {
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   
   // Show typing indicator
   const typingEl = document.createElement('div');
   typingEl.className = 'chat-msg chat-msg-bot';
-  typingEl.innerHTML = '<div class="kaya-typing-indicator"><span></span><span></span><span></span></div>';
+  typingEl.innerHTML = '<div class="mendie-typing-indicator"><span></span><span></span><span></span></div>';
   log.appendChild(typingEl);
   scrollChatBottom();
 
@@ -96,7 +96,7 @@ function addBotMessageWithTyping(text, callback) {
 }
 
 function addBotMessage(text, html = null) {
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   const bubble = document.createElement('div');
   bubble.className = 'chat-msg chat-msg-bot';
   bubble.style.animation = 'slideIn 0.3s ease forwards';
@@ -110,7 +110,7 @@ function addBotMessage(text, html = null) {
 }
 
 function addUserMessage(text) {
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   const bubble = document.createElement('div');
   bubble.className = 'chat-msg chat-msg-user';
   bubble.style.animation = 'slideIn 0.3s ease forwards';
@@ -120,7 +120,7 @@ function addUserMessage(text) {
 }
 
 function renderQuickReplies(options) {
-  const mount = document.getElementById('kaya-quick-replies-mount');
+  const mount = document.getElementById('mendie-quick-replies-mount');
   mount.innerHTML = '';
   options.forEach(opt => {
     const btn = document.createElement('button');
@@ -131,12 +131,12 @@ function renderQuickReplies(options) {
   });
 }
 
-function handleKayaKeyPress(e) {
-  if (e.key === 'Enter') sendKayaMessage();
+function handleMendieKeyPress(e) {
+  if (e.key === 'Enter') sendMendieMessage();
 }
 
-function sendKayaMessage() {
-  const input = document.getElementById('kaya-input');
+function sendMendieMessage() {
+  const input = document.getElementById('mendie-input');
   const val = input.value.trim();
   if (!val) return;
   input.value = '';
@@ -145,7 +145,7 @@ function sendKayaMessage() {
 
 function handleUserInput(input) {
   addUserMessage(input);
-  document.getElementById('kaya-quick-replies-mount').innerHTML = '';
+  document.getElementById('mendie-quick-replies-mount').innerHTML = '';
 
   setTimeout(() => {
     processChatState(input);
@@ -274,7 +274,7 @@ function processChatState(input) {
       break;
 
     case 5: // RESTART
-      resetKayaConversation();
+      resetMendieConversation();
       break;
   }
 }
@@ -326,12 +326,12 @@ function provideDiagnosticRecommendation() {
 }
 
 function renderTechMatchCard(tech, reason) {
-  const log = document.getElementById('kaya-messages-log');
+  const log = document.getElementById('mendie-messages-log');
   const card = document.createElement('div');
   card.className = 'chat-recommend-card';
   card.onclick = () => {
     window.location.hash = `#profile/${tech.id}`;
-    toggleKayaChat();
+    toggleMendieChat();
   };
   
   const badge = tech.verified ? '<span style="color:var(--color-success);font-weight:700;font-size:11px;">✓ Verified</span>' : '';
