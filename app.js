@@ -53,115 +53,39 @@ window.addEventListener('DOMContentLoaded', () => {
   initPopularRankings();
   populateBrandSelectors();
   updateAuthBtnState();
-  startHeroAnimation();
-  startSearchPlaceholderAnimation();
   initScrollAnimations();
-  initSearchAutocomplete();
+  initHeroParticles();
   renderTestimonials();
   renderTechShowcase();
 
   lucide.createIcons();
 });
 
-// HERO ANIMATED TEXT
-function startHeroAnimation() {
-  const el = document.getElementById('hero-animated-text');
-  if (!el) return;
-  el.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-
-  setInterval(() => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(10px)';
-    setTimeout(() => {
-      currentHeroIndex = (currentHeroIndex + 1) % HERO_PHRASES.length;
-      el.textContent = HERO_PHRASES[currentHeroIndex];
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-    }, 400);
-  }, 3000);
-}
-
-// SEARCH PLACEHOLDER ANIMATION
-function startSearchPlaceholderAnimation() {
-  const input = document.getElementById('hero-search-input');
-  if (!input) return;
-  let exampleIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 80;
-
-  function typeChar() {
-    const current = SEARCH_EXAMPLES[exampleIndex];
-    if (!isDeleting) {
-      input.placeholder = current.substring(0, charIndex + 1);
-      charIndex++;
-      if (charIndex === current.length) {
-        isDeleting = true;
-        setTimeout(typeChar, 2000);
-        return;
-      }
-    } else {
-      input.placeholder = current.substring(0, charIndex - 1);
-      charIndex--;
-      if (charIndex === 0) {
-        isDeleting = false;
-        exampleIndex = (exampleIndex + 1) % SEARCH_EXAMPLES.length;
-      }
-    }
-    setTimeout(typeChar, isDeleting ? 40 : typingSpeed);
+// HERO PARTICLES
+function initHeroParticles() {
+  const container = document.getElementById('hero-particles');
+  if (!container) return;
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'hero-particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.width = (2 + Math.random() * 4) + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.animationDuration = (10 + Math.random() * 20) + 's';
+    particle.style.animationDelay = Math.random() * 10 + 's';
+    particle.style.opacity = (0.05 + Math.random() * 0.15);
+    const colors = ['var(--color-primary)', 'var(--color-accent)', 'var(--color-purple)'];
+    particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+    container.appendChild(particle);
   }
-
-  typeChar();
 }
 
-// SEARCH AUTOCOMPLETE
-function initSearchAutocomplete() {
-  const input = document.getElementById('hero-search-input');
-  const suggestionsEl = document.getElementById('search-suggestions');
-  if (!input || !suggestionsEl) return;
-
-  const allSuggestions = [
-    'iPhone screen repair', 'iPhone battery replacement', 'Samsung Galaxy repair',
-    'Laptop screen replacement', 'MacBook not charging', 'Solar panel cleaning',
-    'Inverter repair', 'Plumbing leak fix', 'Electrical wiring', 'Fridge not cooling',
-    'Washing machine repair', 'Phone water damage', 'Camera repair', 'Back glass replacement'
-  ];
-
-  input.addEventListener('input', () => {
-    const val = input.value.toLowerCase().trim();
-    if (val.length < 2) { suggestionsEl.style.display = 'none'; return; }
-
-    const matches = allSuggestions.filter(s => s.toLowerCase().includes(val)).slice(0, 6);
-    if (matches.length === 0) { suggestionsEl.style.display = 'none'; return; }
-
-    suggestionsEl.innerHTML = matches.map(m =>
-      `<div class="search-suggestion-item" onclick="selectSuggestion('${m}')"><i data-lucide="search" style="width:14px;height:14px;color:var(--text-muted);"></i> ${m}</div>`
-    ).join('');
-    suggestionsEl.style.display = 'block';
-    lucide.createIcons();
-  });
-
-  input.addEventListener('blur', () => { setTimeout(() => { suggestionsEl.style.display = 'none'; }, 200); });
-  input.addEventListener('focus', () => { if (input.value.trim().length >= 2) input.dispatchEvent(new Event('input')); });
-}
-
-function selectSuggestion(val) {
-  const input = document.getElementById('hero-search-input');
-  if (input) input.value = val;
-  document.getElementById('search-suggestions').style.display = 'none';
-  handleHeroSearch();
-}
-
-function handleHeroSearch() {
-  const val = document.getElementById('hero-search-input')?.value?.trim();
-  window.location.hash = '#search';
-  setTimeout(() => { runSearchFiltering(); }, 100);
-}
-
-function searchByCategory(cat) {
-  const input = document.getElementById('hero-search-input');
-  if (input) input.value = cat;
-  window.location.hash = '#search';
+// FAQ TOGGLE
+function toggleFaq(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+  lucide.createIcons();
 }
 
 // SCROLL ANIMATIONS (INTERSECTION OBSERVER)
