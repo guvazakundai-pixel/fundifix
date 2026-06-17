@@ -1,7 +1,7 @@
-// FundiFix - Admin Panel Controller
+// RepairHub — Admin Panel Controller
 
 let currentAdminTab = 'techs';
-let isAdminAuthenticated = JSON.parse(localStorage.getItem('fundifix_admin_auth')) || false;
+let isAdminAuthenticated = JSON.parse(localStorage.getItem('repairhub_admin_auth')) || false;
 
 function initAdminPanel() {
   if (!isAdminAuthenticated) {
@@ -54,7 +54,7 @@ function handleAdminLoginSubmit(e) {
   
   if (u === 'admin' && p === 'admin') {
     isAdminAuthenticated = true;
-    localStorage.setItem('fundifix_admin_auth', 'true');
+    localStorage.setItem('repairhub_admin_auth', 'true');
     // Restore default view shell structure
     restoreAdminShell();
     initAdminPanel();
@@ -65,7 +65,7 @@ function handleAdminLoginSubmit(e) {
 
 function logoutAdmin() {
   isAdminAuthenticated = false;
-  localStorage.removeItem('fundifix_admin_auth');
+  localStorage.removeItem('repairhub_admin_auth');
   window.location.hash = '#home';
 }
 
@@ -75,7 +75,7 @@ function restoreAdminShell() {
     <div class="admin-view-wrapper">
       <div class="admin-header">
         <div>
-          <h1 style="font-size: 32px;">FundiFix Portal Admin</h1>
+          <h1 style="font-size: 32px;">RepairHub Portal Admin</h1>
           <p style="color:var(--text-secondary); margin-top: 4px;">Monitor technician audits, moderation queues, and database variables.</p>
         </div>
         <button class="btn btn-outline" onclick="logoutAdmin()">Logout</button>
