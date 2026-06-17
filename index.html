@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>FundiFix | Find Trusted Repair Experts in Minutes</title>
+  <meta name="description" content="FundiFix is the easiest and most trusted platform to find verified repair technicians for phones, laptops, electrical, plumbing, solar, and home maintenance across Africa.">
+  <meta name="theme-color" content="#2563EB">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- SVG Gradient Definitions -->
+  <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#06B6D4"/>
+      </linearGradient>
+      <linearGradient id="brand-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#2563EB"/>
+        <stop offset="100%" stop-color="#7C3AED"/>
+      </linearGradient>
+      <linearGradient id="brand-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#06B6D4"/>
+        <stop offset="100%" stop-color="#10B981"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div id="app-container">
+
+    <!-- STICKY GLASSMORPHISM NAVBAR -->
+    <nav class="navbar" id="main-navbar">
+      <div class="navbar-container">
+        <a href="#home" class="nav-brand">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          <span>FundiFix</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home" class="active" data-nav="home">Home</a></li>
+          <li><a href="#search" data-nav="search">Find Technicians</a></li>
+          <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
+          <li><a href="#get-listed" data-nav="get-listed">Become a Fundi</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="btn btn-ghost" id="auth-nav-btn" onclick="openAuthModal()">Sign In</button>
+          <a href="#search" class="btn btn-primary btn-glow">Find a Technician</a>
+        </div>
+
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <a href="#home" onclick="closeMobileMenu()">Home</a>
+        <a href="#search" onclick="closeMobileMenu()">Find Technicians</a>
+        <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
+        <a href="#get-listed" onclick="closeMobileMenu()">Become a Fundi</a>
+        <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="openAuthModal();closeMobileMenu();">Sign In</button>
+      </div>
+    </nav>
+
+    <!-- VIEWS MOUNT POINT -->
+    <main class="main-content" id="view-mount">
+
+      <!-- HOME VIEW -->
+      <section id="view-home" class="view">
+
+        <!-- HERO SECTION -->
+        <div class="hero">
+          <!-- Animated Background -->
+          <div class="hero-bg">
+            <div class="gradient-orb gradient-orb-1"></div>
+            <div class="gradient-orb gradient-orb-2"></div>
+            <div class="gradient-orb gradient-orb-3"></div>
+            <div class="hero-grid-overlay"></div>
+          </div>
+
+          <!-- Floating Service Cards -->
+          <div class="floating-cards">
+            <div class="floating-card floating-card-1" data-delay="0">
+              <i data-lucide="smartphone"></i>
+              <span>Phone Repair</span>
+            </div>
+            <div class="floating-card floating-card-2" data-delay="200">
+              <i data-lucide="laptop"></i>
+              <span>Laptop Fix</span>
+            </div>
+            <div class="floating-card floating-card-3" data-delay="400">
+              <i data-lucide="sun"></i>
+              <span>Solar</span>
+            </div>
+            <div class="floating-card floating-card-4" data-delay="600">
+              <i data-lucide="wrench"></i>
+              <span>Plumbing</span>
+            </div>
+          </div>
+
+          <div class="hero-content">
+            <div class="hero-badge fade-up" style="animation-delay:0.1s">
+              <i data-lucide="zap" style="width:14px;height:14px;"></i>
+              Trusted by 50,000+ customers across Africa
+            </div>
+
+            <h1 class="hero-headline fade-up" style="animation-delay:0.2s">
+              <span class="headline-static">Find Trusted</span>
+              <span class="headline-animated" id="hero-animated-text">Phone Repair</span>
+              <span class="headline-static">Experts in Minutes</span>
+            </h1>
+
+            <p class="hero-subheadline fade-up" style="animation-delay:0.3s">
+              Compare ratings, costs, and locations of verified technicians near you. From phones to solar panels — get it fixed fast, get it fixed right.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="hero-search fade-up" style="animation-delay:0.4s">
+              <div class="search-bar" id="main-search-bar">
+                <div class="search-icon">
+                  <i data-lucide="search" style="width:20px;height:20px;"></i>
+                </div>
+                <input type="text" id="hero-search-input" placeholder="Search for a repair service..." autocomplete="off">
+                <div class="search-placeholder-animated" id="search-placeholder"></div>
+                <button class="search-submit" onclick="handleHeroSearch()">
+                  <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+                </button>
+              </div>
+              <div class="search-suggestions" id="search-suggestions" style="display:none;"></div>
+              <div class="search-categories">
+                <button class="search-category-chip" onclick="searchByCategory('Phone Repair')">
+                  <i data-lucide="smartphone" style="width:14px;height:14px;"></i> Phone Repair
+                </button>
+                <button class="search-category-chip" onclick="searchByCategory('Laptop Repair')">
+                  <i data-lucide="laptop" style="width:14px;height:14px;"></i> Laptop
+                </button>
+                <button class="search-category-chip" onclick="searchByCategory('Electrical')">
+                  <i data-lucide="zap" style="width:14px;height:14px;"></i> Electrical
+                </button>
+                <button class="search-category-chip" onclick="searchByCategory('Plumbing')">
+                  <i data-lucide="droplets" style="width:14px;height:14px;"></i> Plumbing
+                </button>
+                <button class="search-category-chip" onclick="searchByCategory('Solar')">
+                  <i data-lucide="sun" style="width:14px;height:14px;"></i> Solar
+                </button>
+                <button class="search-category-chip" onclick="searchByCategory('Appliance')">
+                  <i data-lucide="refrigerator" style="width:14px;height:14px;"></i> Appliance
+                </button>
+              </div>
+            </div>
+
+            <div class="hero-ctas fade-up" style="animation-delay:0.5s">
+              <a href="#search" class="btn btn-primary btn-glow btn-lg">
+                <i data-lucide="search" style="width:18px;height:18px;"></i> Find a Technician
+              </a>
+              <a href="#get-listed" class="btn btn-secondary btn-lg">
+                <i data-lucide="user-plus" style="width:18px;height:18px;"></i> Become a Fundi
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATS SECTION -->
+        <div class="stats-section" id="stats-section">
+          <div class="stats-container">
+            <div class="stat-item">
+              <div class="stat-number" data-target="50000" data-suffix="+">0</div>
+              <div class="stat-label">Repairs Completed</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="2000" data-suffix="+">0</div>
+              <div class="stat-label">Verified Technicians</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="98" data-suffix="%">0</div>
+              <div class="stat-label">Customer Satisfaction</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number" data-target="5" data-suffix=" min">0</div>
+              <div class="stat-label">Avg Response Time</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SERVICE CATEGORIES -->
+        <div class="section" id="services-section">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-tag">Services</span>
+              <h2 class="section-title">Everything You Need, Fixed</h2>
+              <p class="section-subtitle">From cracked screens to solar installations — find verified experts for any repair.</p>
+            </div>
+          </div>
+
+          <div class="services-grid">
+            <div class="service-card fade-up" style="--accent:#2563EB;animation-delay:0.05s">
+              <div class="service-card-icon">
+                <i data-lucide="smartphone"></i>
+              </div>
+              <h3>Phone Repairs</h3>
+              <p>Screen, battery, charging port, water damage — all brands covered.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#7C3AED;animation-delay:0.1s">
+              <div class="service-card-icon">
+                <i data-lucide="laptop"></i>
+              </div>
+              <h3>Laptop Repairs</h3>
+              <p>Hardware diagnostics, screen replacement, keyboard, and motherboard fixes.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#F59E0B;animation-delay:0.15s">
+              <div class="service-card-icon">
+                <i data-lucide="zap"></i>
+              </div>
+              <h3>Electrical</h3>
+              <p>Wiring, installations, circuit breakers, and safety inspections.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#06B6D4;animation-delay:0.2s">
+              <div class="service-card-icon">
+                <i data-lucide="droplets"></i>
+              </div>
+              <h3>Plumbing</h3>
+              <p>Leaks, installations, drain cleaning, and emergency plumbing services.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#10B981;animation-delay:0.25s">
+              <div class="service-card-icon">
+                <i data-lucide="home"></i>
+              </div>
+              <h3>Home Maintenance</h3>
+              <p>Painting, carpentry, door locks, and general home repair services.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#F97316;animation-delay:0.3s">
+              <div class="service-card-icon">
+                <i data-lucide="sun"></i>
+              </div>
+              <h3>Solar Systems</h3>
+              <p>Inverter repair, panel cleaning, battery replacement, and solar installations.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+            <div class="service-card fade-up" style="--accent:#EF4444;animation-delay:0.35s">
+              <div class="service-card-icon">
+                <i data-lucide="refrigerator"></i>
+              </div>
+              <h3>Appliance Repairs</h3>
+              <p>Fridge, washing machine, microwave, and all household appliance fixes.</p>
+              <div class="service-card-arrow"><i data-lucide="arrow-right"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HOW IT WORKS -->
+        <div class="section section-alt" id="how-it-works">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-tag">How It Works</span>
+              <h2 class="section-title">Get Your Fix in 3 Simple Steps</h2>
+              <p class="section-subtitle">No bidding wars. No untrustworthy encounters. Just verified professionals.</p>
+            </div>
+          </div>
+
+          <div class="steps-grid">
+            <div class="step-card fade-up" style="animation-delay:0.1s">
+              <div class="step-number">01</div>
+              <div class="step-icon-wrapper">
+                <i data-lucide="search-code"></i>
+              </div>
+              <h3 class="step-title">Describe the Problem</h3>
+              <p class="step-desc">Search for your device and issue. Get instant fair price estimates so you never get overcharged.</p>
+            </div>
+            <div class="step-card fade-up" style="animation-delay:0.2s">
+              <div class="step-number">02</div>
+              <div class="step-icon-wrapper">
+                <i data-lucide="sliders-horizontal"></i>
+              </div>
+              <h3 class="step-title">Compare Technicians</h3>
+              <p class="step-desc">Browse verified professionals. Filter by rating, speed, price, and specialization.</p>
+            </div>
+            <div class="step-card fade-up" style="animation-delay:0.3s">
+              <div class="step-number">03</div>
+              <div class="step-icon-wrapper">
+                <i data-lucide="message-square"></i>
+              </div>
+              <h3 class="step-title">Book & Repair</h3>
+              <p class="step-desc">Contact directly via WhatsApp with pre-filled details. Hand over with confidence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TECHNICIAN SHOWCASE -->
+        <div class="section" id="rankings">
+          <div class="section-header">
+            <div class="section-title-group">
+              <span class="section-tag">Top Rated</span>
+              <h2 class="section-title">Meet Our Best Technicians</h2>
+              <p class="section-subtitle">Verified, rated, and reviewed by real customers across Africa.</p>
+            </div>
+            <a href="#search" class="btn btn-outline btn-sm">View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
+          </div>
+
+          <div class="tech-showcase-grid" id="tech-showcase-mount"></div>
+        </div>
+
+        <!-- TRUST SECTION -->
+        <div class="section section-alt" id="trust-section">
+          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
+            <span class="section-tag">Trust & Safety</span>
+            <h2 class="section-title">Why Millions Trust FundiFix</h2>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Every transaction is protected, every technician is verified.</p>
+          </div>
+
+          <div class="trust-grid">
+            <div class="trust-card fade-up" style="animation-delay:0.05s">
+              <div class="trust-card-icon">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <h4>Verified Professionals</h4>
+              <p>Every technician passes our verification process including ID checks and skill assessments.</p>
+            </div>
+            <div class="trust-card fade-up" style="animation-delay:0.1s">
+              <div class="trust-card-icon">
+                <i data-lucide="lock"></i>
+              </div>
+              <h4>Secure Payments</h4>
+              <p>Your money is held securely until the repair is completed to your satisfaction.</p>
+            </div>
+            <div class="trust-card fade-up" style="animation-delay:0.15s">
+              <div class="trust-card-icon">
+                <i data-lucide="star"></i>
+              </div>
+              <h4>Customer Reviews</h4>
+              <p>Real, verified reviews from customers who have completed repairs with each technician.</p>
+            </div>
+            <div class="trust-card fade-up" style="animation-delay:0.2s">
+              <div class="trust-card-icon">
+                <i data-lucide="award"></i>
+              </div>
+              <h4>Warranty Protection</h4>
+              <p>All repairs come with a minimum 30-day warranty for your peace of mind.</p>
+            </div>
+            <div class="trust-card fade-up" style="animation-delay:0.25s">
+              <div class="trust-card-icon">
+                <i data-lucide="clock"></i>
+              </div>
+              <h4>Fast Response</h4>
+              <p>Most technicians respond within 5 minutes. Get help when you need it most.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="section" id="testimonials">
+          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
+            <span class="section-tag">Testimonials</span>
+            <h2 class="section-title">Loved Across Africa</h2>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">See what real customers are saying about their FundiFix experience.</p>
+          </div>
+
+          <div class="testimonials-carousel" id="testimonials-carousel">
+            <div class="testimonials-track" id="testimonials-track"></div>
+          </div>
+
+          <div class="testimonials-controls">
+            <button class="carousel-btn" onclick="moveTestimonials(-1)"><i data-lucide="chevron-left"></i></button>
+            <div class="carousel-dots" id="carousel-dots"></div>
+            <button class="carousel-btn" onclick="moveTestimonials(1)"><i data-lucide="chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="cta-section">
+          <div class="cta-bg">
+            <div class="gradient-orb gradient-orb-cta-1"></div>
+            <div class="gradient-orb gradient-orb-cta-2"></div>
+          </div>
+          <div class="cta-content">
+            <h2 class="cta-title">Ready to Get It Fixed?</h2>
+            <p class="cta-subtitle">Join 50,000+ happy customers who found their perfect technician on FundiFix.</p>
+            <div class="cta-buttons">
+              <a href="#search" class="btn btn-white btn-lg">Find a Technician</a>
+              <a href="#get-listed" class="btn btn-outline-white btn-lg">Become a Fundi</a>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SEARCH DIRECTORY VIEW -->
+      <section id="view-search" class="view" style="display:none;">
+        <div class="search-view-container">
+          <div class="listings-panel">
+            <div class="filter-bar">
+              <div class="filters-pills">
+                <select class="filter-pill-select" id="filter-city" onchange="runSearchFiltering()">
+                  <option value="">All Cities</option>
+                  <option value="Harare">Harare</option>
+                  <option value="Nairobi">Nairobi</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Johannesburg">Johannesburg</option>
+                  <option value="Accra">Accra</option>
+                </select>
+                <select class="filter-pill-select" id="filter-brand" onchange="runSearchFiltering()">
+                  <option value="">All Brands</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Tecno">Tecno</option>
+                  <option value="Infinix">Infinix</option>
+                  <option value="Xiaomi">Xiaomi</option>
+                  <option value="Huawei">Huawei</option>
+                </select>
+                <select class="filter-pill-select" id="filter-issue" onchange="runSearchFiltering()">
+                  <option value="">Any Issue</option>
+                  <option value="screen">Screen</option>
+                  <option value="battery">Battery</option>
+                  <option value="charging">Charging Port</option>
+                  <option value="water">Water Damage</option>
+                  <option value="camera">Camera</option>
+                  <option value="backglass">Back Glass</option>
+                  <option value="software">Software</option>
+                </select>
+                <select class="filter-pill-select" id="filter-verified" onchange="runSearchFiltering()">
+                  <option value="">All Statuses</option>
+                  <option value="true">Verified Only</option>
+                </select>
+              </div>
+              <div class="results-count" id="search-results-count">0 technicians found</div>
+            </div>
+            <div class="listings-grid" id="listings-grid-mount"></div>
+          </div>
+          <div class="map-panel">
+            <div id="leaflet-map"><div class="map-fallback">Loading Map...</div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECHNICIAN DETAIL VIEW -->
+      <section id="view-profile" class="view" style="display:none;">
+        <div class="profile-view-wrapper" id="profile-detail-mount"></div>
+      </section>
+
+      <!-- PRICING GUIDE VIEW -->
+      <section id="view-pricing" class="view" style="display:none;">
+        <div class="section">
+          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
+            <span class="section-tag">Pricing Transparency</span>
+            <h2 class="section-title">Standard Repair Pricing Index</h2>
+            <p class="section-subtitle" style="margin-top:10px;max-width:600px;">
+              Don't get overcharged. We collect market repair costs across Africa to provide a fair pricing baseline.
+            </p>
+          </div>
+
+          <div class="pricing-tool-card">
+            <h3 style="margin-bottom:24px;font-size:20px;">Calculate Repair Estimate</h3>
+            <div class="pricing-selectors">
+              <div class="pricing-selector">
+                <label for="price-brand">Brand</label>
+                <select id="price-brand" onchange="populatePricingModels()">
+                  <option value="Apple">Apple</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Tecno">Tecno</option>
+                  <option value="Infinix">Infinix</option>
+                </select>
+              </div>
+              <div class="pricing-selector">
+                <label for="price-model">Model</label>
+                <select id="price-model"></select>
+              </div>
+              <div class="pricing-selector">
+                <label for="price-issue">Repair Needed</label>
+                <select id="price-issue">
+                  <option value="screen">Screen Replacement</option>
+                  <option value="battery">Battery Replacement</option>
+                  <option value="charging">Charging Port Repair</option>
+                  <option value="water">Water Damage Recovery</option>
+                  <option value="camera">Camera Repair</option>
+                  <option value="backglass">Back Glass Replacement</option>
+                  <option value="software">Software / Unlock</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary" onclick="calculatePagePrice()" style="width:100%;height:48px;border-radius:var(--radius-md);margin-bottom:32px;">Calculate Estimate</button>
+            <div class="pricing-result-pane">
+              <div class="pricing-cost-zone">
+                <span class="pricing-cost-label">Estimated Fair Cost</span>
+                <span class="pricing-cost-value" id="calc-price-output">$0 - $0</span>
+              </div>
+              <div class="pricing-specs-zone">
+                <div class="pricing-spec-item">
+                  <i data-lucide="clock" style="width:16px;height:16px;"></i> Time required: <strong id="calc-time-output">1 - 2 hrs</strong>
+                </div>
+                <div class="pricing-spec-item">
+                  <i data-lucide="shield-check" style="width:16px;height:16px;"></i> Parts recommended: <strong id="calc-parts-output">OEM / Premium Grade</strong>
+                </div>
+                <div class="pricing-spec-item" style="color:var(--color-accent);font-weight:600;">
+                  <i data-lucide="check-circle" style="width:16px;height:16px;"></i> Safe pricing guaranteed
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- GET LISTED -->
+      <section id="view-get-listed" class="view" style="display:none;">
+        <div class="section">
+          <div class="get-listed-card">
+            <h2 style="font-size:28px;margin-bottom:8px;">Apply to Join FundiFix</h2>
+            <p style="color:var(--text-secondary);margin-bottom:32px;">
+              Are you an experienced technician? Build your business profile, get verified, and connect with high-intent customers.
+            </p>
+            <form id="tech-onboard-form" onsubmit="handleOnboardSubmit(event)">
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label for="onboard-name">Shop or Business Name *</label>
+                  <input type="text" id="onboard-name" required placeholder="e.g. Apex Repair Labs">
+                </div>
+                <div class="form-field">
+                  <label for="onboard-owner">Owner's Full Name *</label>
+                  <input type="text" id="onboard-owner" required placeholder="e.g. John Doe">
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label for="onboard-city">City *</label>
+                  <select id="onboard-city" required>
+                    <option value="Harare">Harare, Zimbabwe</option>
+                    <option value="Nairobi">Nairobi, Kenya</option>
+                    <option value="Lagos">Lagos, Nigeria</option>
+                    <option value="Johannesburg">Johannesburg, South Africa</option>
+                    <option value="Accra">Accra, Ghana</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="onboard-address">Shop Address *</label>
+                  <input type="text" id="onboard-address" required placeholder="e.g. Shop 24, Joina City Mall">
+                </div>
+              </div>
+              <div class="form-grid-2">
+                <div class="form-field">
+                  <label for="onboard-whatsapp">WhatsApp Number *</label>
+                  <input type="tel" id="onboard-whatsapp" required placeholder="e.g. 263772123456">
+                </div>
+                <div class="form-field">
+                  <label for="onboard-experience">Years of Experience *</label>
+                  <input type="number" id="onboard-experience" required min="1" placeholder="e.g. 5">
+                </div>
+              </div>
+              <div class="form-field">
+                <label>Specializations (Select Brands you fix best)</label>
+                <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;">
+                  <label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Apple"> Apple</label>
+                  <label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Samsung"> Samsung</label>
+                  <label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Tecno"> Tecno</label>
+                  <label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Infinix"> Infinix</label>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;height:48px;border-radius:var(--radius-md);margin-top:16px;">Submit Listing Application</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN VIEW -->
+      <section id="view-admin" class="view" style="display:none;">
+        <div class="admin-view-wrapper">
+          <div class="admin-header">
+            <div>
+              <h1 style="font-size:32px;">FundiFix Portal Admin</h1>
+              <p style="color:var(--text-secondary);margin-top:4px;">Monitor technician audits, moderation queues, and database variables.</p>
+            </div>
+            <button class="btn btn-outline" onclick="logoutAdmin()">Logout</button>
+          </div>
+          <div class="admin-stats-grid">
+            <div class="admin-stat-card"><div class="admin-stat-title">Active Technicians</div><div class="admin-stat-number" id="admin-stat-total-techs">0</div></div>
+            <div class="admin-stat-card"><div class="admin-stat-title">Average Platform Rating</div><div class="admin-stat-number">4.82</div></div>
+            <div class="admin-stat-card"><div class="admin-stat-title">Verification Requests</div><div class="admin-stat-number" id="admin-stat-pending">0</div></div>
+            <div class="admin-stat-card"><div class="admin-stat-title">Total Site Clicks</div><div class="admin-stat-number">14,240</div></div>
+          </div>
+          <div class="admin-tabs">
+            <button class="admin-tab active" onclick="switchAdminTab('techs')" id="admin-tab-techs">Manage Technicians</button>
+            <button class="admin-tab" onclick="switchAdminTab('queue')" id="admin-tab-queue">Applications Queue</button>
+          </div>
+          <div class="admin-table-card">
+            <table class="admin-table" id="admin-data-table">
+              <thead></thead>
+              <tbody id="admin-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-gradient-line"></div>
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#home" class="nav-brand" style="margin-bottom:16px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <span>FundiFix</span>
+            </a>
+            <p class="footer-about">The most trusted platform for finding verified repair technicians across Africa. Designed with Apple simplicity, Airbnb structure, and Stripe polish.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a>
+              <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+              <a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a>
+              <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Platform</h4>
+            <a href="#search">Find Technicians</a>
+            <a href="#pricing">Pricing Guide</a>
+            <a href="#get-listed">Become a Fundi</a>
+            <a href="#admin">Admin Portal</a>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <a href="#">Phone Repairs</a>
+            <a href="#">Laptop Repairs</a>
+            <a href="#">Electrical Services</a>
+            <a href="#">Plumbing</a>
+            <a href="#">Solar Systems</a>
+            <a href="#">Appliance Repair</a>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <a href="mailto:hello@fundifix.africa"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@fundifix.africa</a>
+            <a href="tel:+263772123456"><i data-lucide="phone" style="width:14px;height:14px;"></i> +263 772 123 456</a>
+            <a href="#"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Harare, Zimbabwe</a>
+          </div>
+        </div>
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get the latest repair tips and technician updates.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();alert('Subscribed successfully!');">
+            <input type="email" placeholder="Enter your email" required>
+            <button type="submit" class="btn btn-primary">Subscribe</button>
+          </form>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 FundiFix Africa. All rights reserved.</p>
+          <div class="footer-trust">
+            <span><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Secure Payments</span>
+            <span><i data-lucide="lock" style="width:14px;height:14px;"></i> Data Protected</span>
+            <span><i data-lucide="award" style="width:14px;height:14px;"></i> Verified Techs</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- KAYA CHAT -->
+    <div class="kaya-bubble-container">
+      <div class="kaya-bubble" onclick="toggleKayaChat()" id="kaya-trigger-bubble">
+        <i data-lucide="sparkles" id="kaya-bubble-icon"></i>
+        <div class="kaya-badge" id="kaya-unread" style="display:none;">1</div>
+        <div class="kaya-ping-text" id="kaya-ping-bubble">Ask Kaya</div>
+      </div>
+      <div class="kaya-chat-panel" id="kaya-chat-box">
+        <div class="kaya-chat-header">
+          <div class="kaya-chat-header-user">
+            <div class="kaya-chat-avatar">K</div>
+            <div class="kaya-chat-header-text">
+              <h4>Kaya Assistant</h4>
+              <p>Online | Powered by FundiFix</p>
+            </div>
+          </div>
+          <button class="kaya-chat-close" onclick="toggleKayaChat()"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
+        </div>
+        <div class="kaya-chat-messages" id="kaya-messages-log"></div>
+        <div class="chat-quick-replies" id="kaya-quick-replies-mount"></div>
+        <div class="kaya-chat-input-bar">
+          <input type="text" placeholder="Type a message or issue..." id="kaya-input" onkeypress="handleKayaKeyPress(event)">
+          <button onclick="sendKayaMessage()" title="Send"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AUTH MODAL -->
+    <div class="modal-overlay" id="auth-modal" onclick="closeAuthModal(event)">
+      <div class="modal-card">
+        <h3 class="modal-title">Welcome to FundiFix</h3>
+        <p class="modal-desc">Sign in to leave reviews and submit ratings for technicians.</p>
+        <button class="social-login-btn" onclick="mockGoogleAuth()">
+          <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.68 1.54 14.98 1 12 1 7.35 1 3.39 3.65 1.5 7.5l3.87 3C6.3 7.7 8.94 5.04 12 5.04z"/><path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.37-4.89 3.37-8.5z"/><path fill="#FBBC05" d="M5.37 14.5c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3L1.5 6.9C.54 8.82 0 10.97 0 13.2s.54 4.38 1.5 6.3l3.87-3z"/><path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.1.74-2.5 1.18-4.3 1.18-3.06 0-5.7-2.66-6.63-5.46l-3.87 3C3.39 20.35 7.35 23 12 23z"/></svg>
+          Continue with Google
+        </button>
+        <button class="social-login-btn" onclick="mockEmailAuth()">
+          <i data-lucide="mail" style="width:18px;height:18px;color:var(--text-secondary);"></i>
+          Continue with Email
+        </button>
+        <div class="modal-divider">or</div>
+        <button class="btn btn-outline" style="width:100%;border-radius:var(--radius-md);" onclick="closeAuthModal(null,true)">Browse as Guest</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="data.js"></script>
+  <script src="ai.js"></script>
+  <script src="admin.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
