@@ -15,6 +15,7 @@ export default async function handler(req, res) {
   }
 
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+  console.log('GEMINI_API_KEY present:', !!GEMINI_API_KEY, 'length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
   if (!GEMINI_API_KEY) {
     console.error('GEMINI_API_KEY is not set');
     return res.status(500).json({ error: 'API key not configured' });
@@ -58,8 +59,8 @@ export default async function handler(req, res) {
     }
 
     if (!response.ok) {
-      console.error('Gemini API error:', response.status, JSON.stringify(data).substring(0, 300));
-      return res.status(200).json({ reply: "I'm having trouble right now. Could you try again? 🔧", suggestions: [] });
+      console.error('Gemini API error:', response.status, JSON.stringify(data).substring(0, 500));
+      return res.status(200).json({ reply: "I'm having trouble right now. Could you try again? 🔧", suggestions: [], debug: { status: response.status, error: data } });
     }
 
     if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
