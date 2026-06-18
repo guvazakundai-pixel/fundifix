@@ -164,6 +164,10 @@ async function handleUserInput(input) {
   document.getElementById('mendie-quick-replies-mount').innerHTML = '';
   chatHistory.push({ role: 'user', text: input });
 
+  while (chatHistory.length > 20) {
+    chatHistory.shift();
+  }
+
   showGeminiTyping();
 
   const maxRetries = 2;
@@ -180,7 +184,7 @@ async function handleUserInput(input) {
           messages: chatHistory,
           context: context
         }),
-        signal: AbortSignal.timeout(15000)
+        signal: AbortSignal.timeout(30000)
       });
 
       const data = await response.json();
