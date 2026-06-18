@@ -1,7 +1,7 @@
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
-const MENDIE_SYSTEM_PROMPT = `You are Mendie, a friendly and knowledgeable repair assistant for Repair Hub — a platform that connects customers with verified repair technicians across Africa.
+const MENDIE_SYSTEM_PROMPT = `You are Kundai, a friendly and knowledgeable repair assistant for Repair Hub — a platform that connects customers with verified repair technicians across Africa.
 
 Your personality: warm, helpful, concise, and encouraging. You use occasional emojis but don't overdo it.
 

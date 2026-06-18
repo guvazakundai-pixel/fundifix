@@ -1,11 +1,11 @@
-// Repair Hub — Mendie AI Assistant (Powered by Google Gemini via serverless proxy)
+// Repair Hub — Kundai AI Assistant (Powered by Google Gemini via serverless proxy)
 
 const MENDIE_API_URL = '/api/mendie';
 
 const MENDIE_GREETINGS = [
   "Need help fixing your device? 👋",
   "Cracked screen? I can help! 💪",
-  "Tell Mendie what's broken 🔧",
+  "Tell Kundai what's broken 🔧",
   "Quick diagnosis, right here ✨"
 ];
 
@@ -67,7 +67,7 @@ function resetMendieConversation() {
   const log = document.getElementById('mendie-messages-log');
   log.innerHTML = '';
 
-  addBotMessageWithTyping("Hi there! 👋 I'm Mendie, your repair assistant.", () => {
+  addBotMessageWithTyping("Hi there! 👋 I'm Kundai, your repair assistant.", () => {
     setTimeout(() => {
       addBotMessage("Tell me what's wrong with your device and I'll help you find the best repair expert near you.");
       renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
