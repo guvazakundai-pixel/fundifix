@@ -9,7 +9,7 @@ Examples:
 
 When recommending a technician, use: [TECH_CARD:id] where id is the technician's numeric id.`;
 
-const MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+const MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-2.0-flash-lite'];
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -17,8 +17,8 @@ export default async function handler(req, res) {
   }
 
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-  if (!GEMINI_API_KEY) {
-    console.error('GEMINI_API_KEY is not set');
+  if (!GEMINI_API_KEY || GEMINI_API_KEY.trim() === '') {
+    console.error('GEMINI_API_KEY is not set or empty');
     return res.status(200).json({ reply: "I'm having trouble right now. Could you try again in a moment? 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast'] });
   }
 
@@ -63,11 +63,16 @@ export default async function handler(req, res) {
 
       if (!response.ok) {
         const errorCode = data?.error?.code;
+        const errorMsg = data?.error?.message || 'Unknown error';
+        console.error(`Gemini ${model} error [${response.status}]: code=${errorCode} msg=${errorMsg}`);
         if (errorCode === 429) {
           console.warn(`Model ${model} quota exceeded, trying next...`);
           continue;
         }
-        console.error('Gemini API error:', response.status, JSON.stringify(data).substring(0, 300));
+        if (response.status === 400 && errorMsg.includes('API key')) {
+          console.error('API key is invalid - check GEMINI_API_KEY env var');
+          return res.status(200).json({ reply: "I'm having trouble right now. Could you try again in a moment? 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast'] });
+        }
         continue;
       }
 
