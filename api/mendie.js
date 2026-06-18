@@ -1,6 +1,3 @@
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
-
 const MENDIE_SYSTEM_PROMPT = `You are Kundai, a friendly and knowledgeable repair assistant for Repair Hub — a platform that connects customers with verified repair technicians across Africa.
 
 Your personality: warm, helpful, concise, and encouraging. You use occasional emojis but don't overdo it.
@@ -26,10 +23,14 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+  const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+
   try {
     const { messages, context } = req.body;
 
     if (!GEMINI_API_KEY) {
+      console.error('GEMINI_API_KEY is not set');
       return res.status(500).json({ error: 'API key not configured' });
     }
 
@@ -61,10 +62,11 @@ export default async function handler(req, res) {
       const reply = data.candidates[0].content.parts[0].text;
       return res.status(200).json({ reply: reply.trim() });
     } else {
+      console.error('Gemini response missing candidates:', JSON.stringify(data).substring(0, 500));
       return res.status(200).json({ reply: "I'm having trouble connecting right now. Could you try again? 🔧" });
     }
   } catch (error) {
-    console.error('Mendie API error:', error);
+    console.error('Kundai API error:', error);
     return res.status(500).json({ error: 'Internal server error' });
   }
 }
