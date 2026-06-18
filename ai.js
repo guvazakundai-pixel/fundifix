@@ -297,13 +297,37 @@ function processGeminiReply(reply, userInput, apiSuggestions) {
 
 function getSmartSuggestions(userInput) {
   const lower = userInput.toLowerCase();
-  if (lower.includes('price') || lower.includes('cost') || lower.includes('how much')) {
-    return ['Screen repair cost', 'Battery replacement cost', 'Charging port cost', 'View pricing guide'];
+  const history = chatHistory.map(m => m.text.toLowerCase());
+  const allText = history.join(' ');
+
+  if (allText.includes('screen') || allText.includes('crack') || allText.includes('glass')) {
+    if (!allText.match(/iphone|samsung|tecno|infinix|xiaomi|huawei|galaxy/)) {
+      return ['iPhone', 'Samsung Galaxy', 'Tecno', 'Infinix'];
+    }
+    if (!allText.match(/harare|nairobi|lagos|johannesburg|accra/)) {
+      return ['Harare', 'Nairobi', 'Lagos', 'Johannesburg'];
+    }
+    return ['How much will it cost?', 'Find a technician near me', 'Is it worth repairing?'];
   }
-  if (lower.includes('technician') || lower.includes('repair') || lower.includes('fix')) {
+  if (allText.includes('battery') || allText.includes('drain') || allText.includes('charging') || allText.includes('charge')) {
+    if (!allText.match(/iphone|samsung|tecno|infinix|xiaomi|huawei|galaxy/)) {
+      return ['iPhone', 'Samsung Galaxy', 'Tecno', 'Infinix'];
+    }
+    if (!allText.match(/harare|nairobi|lagos|johannesburg|accra/)) {
+      return ['Harare', 'Nairobi', 'Lagos', 'Johannesburg'];
+    }
+    return ['How much will it cost?', 'Find a technician', 'Ask about warranty'];
+  }
+  if (allText.includes('water') || allText.includes('wet')) {
+    return ['Can it be saved?', 'How much does water damage repair cost?', 'Find a technician', 'Is my data safe?'];
+  }
+  if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('pricing')) {
+    return ['Screen repair cost', 'Battery replacement cost', 'Find a technician', 'View pricing guide'];
+  }
+  if (lower.includes('technician') || lower.includes('repair') || lower.includes('fix') || lower.includes('find')) {
     return ['Find technicians near me', 'How much will it cost?', 'View pricing guide', 'Ask something else'];
   }
-  return ['My screen is cracked', 'Phone not charging', 'Battery draining fast', 'View all technicians'];
+  return ['My screen is cracked', 'Phone not charging', 'Battery draining fast', 'Water damage'];
 }
 
 function renderTechMatchCard(tech, reason) {
