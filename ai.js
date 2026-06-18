@@ -166,35 +166,47 @@ async function handleUserInput(input) {
 
   showGeminiTyping();
 
-  try {
-    const context = buildContext(input);
+  const maxRetries = 2;
+  let lastError = null;
 
-    const response = await fetch(MENDIE_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        messages: chatHistory,
-        context: context
-      })
-    });
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      const context = buildContext(input);
 
-    const data = await response.json();
+      const response = await fetch(MENDIE_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: chatHistory,
+          context: context
+        }),
+        signal: AbortSignal.timeout(15000)
+      });
 
-    hideGeminiTyping();
+      const data = await response.json();
 
-    if (data.reply) {
-      chatHistory.push({ role: 'model', text: data.reply });
-      processGeminiReply(data.reply, input, data.suggestions || []);
-    } else {
-      addBotMessage("I'm having trouble connecting right now. Could you try again? 🔧");
-      renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
+      hideGeminiTyping();
+
+      if (data.reply) {
+        chatHistory.push({ role: 'model', text: data.reply });
+        processGeminiReply(data.reply, input, data.suggestions || []);
+        return;
+      } else {
+        lastError = new Error('Empty reply from API');
+      }
+    } catch (error) {
+      lastError = error;
+      console.error(`Kundai API attempt ${attempt + 1} failed:`, error);
+      if (attempt < maxRetries) {
+        await new Promise(r => setTimeout(r, 1000));
+        continue;
+      }
     }
-  } catch (error) {
-    hideGeminiTyping();
-    console.error('Mendie API error:', error);
-    addBotMessage("Oops, something went wrong on my end. Please try again! 🔧");
-    renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
   }
+
+  hideGeminiTyping();
+  addBotMessage("I'm having trouble connecting right now. Could you try again? 🔧");
+  renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
 }
 
 function buildContext(userInput) {
