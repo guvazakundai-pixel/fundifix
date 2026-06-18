@@ -1,4 +1,4 @@
-/* RepairHub Premium Redesign — Inspired by Stripe, Linear, Apple, Airbnb */
+/* Repair Hub Premium Redesign — Inspired by Stripe, Linear, Apple, Airbnb */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -218,10 +218,11 @@ h1,h2,h3,h4,h5,h6 {
 .btn-glow:hover { box-shadow: 0 8px 32px var(--color-primary-glow); }
 
 .btn-secondary {
-  background: var(--bg-primary); color: var(--text-primary);
-  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.15); color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  backdrop-filter: blur(8px);
 }
-.btn-secondary:hover { background: var(--bg-secondary); transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.btn-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); box-shadow: var(--shadow-sm); border-color: rgba(255,255,255,0.5); }
 
 .btn-ghost {
   background: transparent; color: var(--text-secondary); font-weight: 500;
@@ -244,13 +245,62 @@ h1,h2,h3,h4,h5,h6 {
 
 /* HERO SECTION */
 .hero {
-  position: relative; padding: 120px 24px 80px;
-  background-color: var(--bg-primary); overflow: hidden; min-height: 90vh;
+  position: relative; padding: 140px 24px 100px;
+  background-color: var(--bg-dark); overflow: hidden; min-height: 90vh;
   display: flex; align-items: center; justify-content: center;
 }
 
-.hero-bg {
-  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+.hero-bg-image {
+  position: absolute;
+  inset: 0;
+  background: url('hero-bg.webp') center center / cover no-repeat;
+  z-index: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(15,23,42,0.82) 0%, rgba(15,23,42,0.7) 40%, rgba(37,99,235,0.55) 100%);
+  z-index: 0;
+}
+
+.hero-content {
+  max-width: 720px;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.hero .hero-headline {
+  color: #fff;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.3);
+}
+
+.hero .hero-subheadline {
+  color: rgba(255,255,255,0.85);
+}
+
+.hero .hero-badge {
+  background: rgba(37,99,235,0.25);
+  color: #93c5fd;
+  border-color: rgba(37,99,235,0.3);
+}
+
+.hero .hero-ctas {
+  justify-content: center;
+}
+
+.hero .hero-trust-row {
+  justify-content: center;
+}
+
+.hero .hero-trust-item span {
+  color: rgba(255,255,255,0.9);
+}
+
+.hero .hero-trust-item {
+  color: rgba(255,255,255,0.8);
 }
 
 .gradient-orb {
@@ -301,7 +351,7 @@ h1,h2,h3,h4,h5,h6 {
 .floating-card-3 { bottom: 30%; left: 10%; animation-delay: 3s; }
 .floating-card-4 { bottom: 22%; right: 5%; animation-delay: 4.5s; }
 
-.hero-content { max-width: 560px; position: relative; z-index: 2; }
+.hero-content { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 2; }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -1014,7 +1064,7 @@ h1,h2,h3,h4,h5,h6 {
 
 @media (max-width: 768px) {
   .hero { padding: 100px 20px 60px; min-height: auto; }
-  .hero-headline { font-size: 36px; }
+  .hero-headline { font-size: 32px; }
   .hero-subheadline { font-size: 16px; margin-bottom: 24px; }
   .hero-ctas { flex-direction: column; align-items: center; }
   .stats-container { flex-direction: column; gap: 24px; }
@@ -1042,7 +1092,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 @media (max-width: 480px) {
-  .hero-headline { font-size: 28px; }
+  .hero-headline { font-size: 26px; }
   .stat-number { font-size: 32px; }
   .profile-trust-strip { flex-direction: column; }
   .services-grid { grid-template-columns: 1fr; }
@@ -1373,9 +1423,12 @@ h1,h2,h3,h4,h5,h6 {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: var(--color-primary);
   opacity: 0.15;
   animation: particleFloat 15s linear infinite;
+}
+
+.hero .hero-particle {
+  background: rgba(255,255,255,0.3);
 }
 
 @keyframes particleFloat {
@@ -1385,29 +1438,4 @@ h1,h2,h3,h4,h5,h6 {
   100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
 }
 
-/* RESPONSIVE */
-@media (max-width: 1024px) {
-  .hero-inner { grid-template-columns: 1fr; text-align: center; gap: 40px; }
-  .hero-visual { order: -1; }
-  .phone-showcase { width: 260px; }
-  .hero-trust-row { justify-content: center; }
-  .trust-stats-row { gap: 24px; }
-  .trust-stat-number { font-size: 28px; }
-}
 
-@media (max-width: 768px) {
-  .hero { padding: 100px 20px 60px; min-height: auto; }
-  .hero-headline { font-size: 36px; }
-  .phone-showcase { width: 220px; }
-  .phone-label { font-size: 11px; padding: 4px 12px; bottom: -40px; }
-  .hero-trust-row { flex-direction: column; align-items: center; gap: 12px; }
-  .trust-stats-row { flex-direction: column; gap: 20px; }
-  .faq-list { padding: 0 8px; }
-  .faq-question { padding: 16px 20px; font-size: 14px; }
-}
-
-@media (max-width: 480px) {
-  .hero-headline { font-size: 28px; }
-  .phone-showcase { width: 200px; }
-  .phone-glow { width: 120px; height: 120px; }
-}

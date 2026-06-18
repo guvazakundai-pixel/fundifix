@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>RepairHub | Find Trusted Repair Experts in Minutes</title>
-  <meta name="description" content="RepairHub is the easiest and most trusted platform to find verified repair technicians for phones, laptops, electrical, plumbing, solar, and home maintenance across Africa.">
+  <title>Repair Hub – Trusted Phone Repair Made Simple</title>
+  <meta name="description" content="Repair Hub connects you with verified, trusted repair technicians. Transparent pricing, real reviews, and no guesswork.">
   <meta name="theme-color" content="#2563EB">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,6 @@
     <defs>
       <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#06B6D4"/></linearGradient>
       <linearGradient id="brand-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#7C3AED"/></linearGradient>
-      <linearGradient id="brand-gradient-3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#06B6D4"/><stop offset="100%" stop-color="#10B981"/></linearGradient>
     </defs>
   </svg>
 
@@ -30,14 +29,14 @@
       <div class="navbar-container">
         <a href="#home" class="nav-brand">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          <span>RepairHub</span>
+          <span>Repair Hub</span>
         </a>
-
         <ul class="nav-links">
           <li><a href="#home" class="active" data-nav="home">Home</a></li>
           <li><a href="#search" data-nav="search">Technicians</a></li>
+          <li><a href="#about" data-nav="about">About</a></li>
           <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
-          <li><a href="#get-listed" data-nav="get-listed">Become a Fundi</a></li>
+          <li><a href="#get-listed" data-nav="get-listed">Become a Tech</a></li>
         </ul>
         <div class="nav-actions">
           <button class="btn btn-ghost" id="auth-nav-btn" onclick="openAuthModal()">Sign In</button>
@@ -48,8 +47,9 @@
       <div class="mobile-menu" id="mobile-menu">
         <a href="#home" onclick="closeMobileMenu()">Home</a>
         <a href="#search" onclick="closeMobileMenu()">Find Technicians</a>
+        <a href="#about" onclick="closeMobileMenu()">About</a>
         <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-        <a href="#get-listed" onclick="closeMobileMenu()">Become a Fundi</a>
+        <a href="#get-listed" onclick="closeMobileMenu()">Become a Tech</a>
         <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="openAuthModal();closeMobileMenu();">Sign In</button>
       </div>
     </nav>
@@ -59,52 +59,30 @@
       <!-- HOME -->
       <section id="view-home" class="view">
 
-        <!-- HERO -->
+        <!-- HERO — Full-width cinematic background -->
         <div class="hero">
-          <div class="hero-bg">
-            <div class="gradient-orb gradient-orb-1"></div>
-            <div class="gradient-orb gradient-orb-2"></div>
-            <div class="gradient-orb gradient-orb-3"></div>
-            <div class="hero-grid-overlay"></div>
-          </div>
-
-          <!-- Floating particles -->
+          <div class="hero-bg-image"></div>
+          <div class="hero-overlay"></div>
           <div class="hero-particles" id="hero-particles"></div>
-
-          <div class="hero-inner">
-            <div class="hero-content">
-              <div class="hero-badge fade-up">
-                <i data-lucide="zap" style="width:14px;height:14px;"></i>
-                Trusted by 50,000+ customers across Africa
-              </div>
-              <h1 class="hero-headline fade-up">
-                Fix Your Device<br>With <span class="headline-gradient">Confidence</span>
-              </h1>
-              <p class="hero-subheadline fade-up">
-                Connect with trusted repair technicians, get transparent service, and bring your device back to life.
-              </p>
-              <div class="hero-ctas fade-up">
-                <a href="#search" class="btn btn-primary btn-glow btn-lg">
-                  <i data-lucide="search" style="width:18px;height:18px;"></i> Find A Technician
-                </a>
-                <button class="btn btn-secondary btn-lg" onclick="openMendieChat(true)">
-                  <i data-lucide="sparkles" style="width:18px;height:18px;"></i> Talk To Mendie
-                </button>
-              </div>
-              <div class="hero-trust-row fade-up">
-                <div class="hero-trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;color:var(--color-success);"></i><span>Verified Experts</span></div>
-                <div class="hero-trust-item"><i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;"></i><span>4.9 Average Rating</span></div>
-                <div class="hero-trust-item"><i data-lucide="clock" style="width:16px;height:16px;color:var(--color-accent);"></i><span>5 Min Response</span></div>
-              </div>
+          <div class="hero-content">
+            <div class="hero-badge fade-up">
+              <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
+              Trusted by 50,000+ customers across Africa
             </div>
-            <div class="hero-visual fade-up">
-              <div class="phone-showcase">
-                <div class="phone-glow phone-glow-red"></div>
-                <div class="phone-glow phone-glow-blue"></div>
-                <img src="phone-hero.webp" alt="Phone repair - broken to fixed" class="phone-image">
-                <div class="phone-label phone-label-broken"><i data-lucide="alert-triangle" style="width:14px;height:14px;"></i> Broken</div>
-                <div class="phone-label phone-label-fixed"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> Fixed</div>
-              </div>
+            <h1 class="hero-headline fade-up">Repair Hub – Trusted Phone Repair Made Simple</h1>
+            <p class="hero-subheadline fade-up">Find reliable repair technicians near you. Transparent pricing. Real reviews. No guesswork.</p>
+            <div class="hero-ctas fade-up">
+              <a href="#search" class="btn btn-primary btn-glow btn-lg">
+                <i data-lucide="search" style="width:18px;height:18px;"></i> Find a Technician
+              </a>
+              <a href="#get-listed" class="btn btn-secondary btn-lg">
+                <i data-lucide="user-plus" style="width:18px;height:18px;"></i> Become a Technician
+              </a>
+            </div>
+            <div class="hero-trust-row fade-up">
+              <div class="hero-trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;color:var(--color-success);"></i><span>Verified Experts</span></div>
+              <div class="hero-trust-item"><i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;"></i><span>4.9 Average Rating</span></div>
+              <div class="hero-trust-item"><i data-lucide="clock" style="width:16px;height:16px;color:var(--color-accent);"></i><span>5 Min Response</span></div>
             </div>
           </div>
         </div>
@@ -150,7 +128,7 @@
               <div class="step-number">03</div>
               <div class="step-icon-wrapper"><i data-lucide="user-check"></i></div>
               <h3 class="step-title">Choose A Technician</h3>
-              <p class="step-desc">Browse trusted professionals, compare ratings, and contact directly via WhatsApp.</p>
+              <p class="step-desc">Browse verified professionals with real reviews and transparent pricing. Contact directly.</p>
               <a href="#search" class="step-cta">View Technicians <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
             </div>
           </div>
@@ -169,10 +147,42 @@
             <div class="service-card fade-up" style="--accent:#2563EB"><div class="service-card-icon"><i data-lucide="smartphone"></i></div><h3>Phone Repairs</h3><p>Screen, battery, charging port, water damage — all brands covered.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
             <div class="service-card fade-up" style="--accent:#7C3AED"><div class="service-card-icon"><i data-lucide="laptop"></i></div><h3>Laptop Repairs</h3><p>Hardware diagnostics, screen replacement, keyboard, and motherboard fixes.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
             <div class="service-card fade-up" style="--accent:#F59E0B"><div class="service-card-icon"><i data-lucide="zap"></i></div><h3>Electrical</h3><p>Wiring, installations, circuit breakers, and safety inspections.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#06B6D4"><div class="service-card-icon"><i data-lucide="droplets"></i></div><h3>Plumbing</h3><p>Leaks, installations, drain cleaning, and emergency plumbing services.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#10B981"><div class="service-card-icon"><i data-lucide="home"></i></div><h3>Home Maintenance</h3><p>Painting, carpentry, door locks, and general home repair services.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
+            <div class="service-card fade-up" style="--accent:#06B6D4"><div class="service-card-icon"><i data-lucide="droplets"></i></div><h3>Plumbing</h3><p>Leaks, installations, drain cleaning, and emergency plumbing.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
+            <div class="service-card fade-up" style="--accent:#10B981"><div class="service-card-icon"><i data-lucide="home"></i></div><h3>Home Maintenance</h3><p>Painting, carpentry, door locks, and general home repairs.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
             <div class="service-card fade-up" style="--accent:#F97316"><div class="service-card-icon"><i data-lucide="sun"></i></div><h3>Solar Systems</h3><p>Inverter repair, panel cleaning, battery replacement, and installations.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
             <div class="service-card fade-up" style="--accent:#EF4444"><div class="service-card-icon"><i data-lucide="refrigerator"></i></div><h3>Appliance Repairs</h3><p>Fridge, washing machine, microwave, and all household appliance fixes.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
+          </div>
+        </div>
+
+        <!-- ABOUT — OUR STORY -->
+        <div class="section section-alt" id="about">
+          <div class="about-layout">
+            <div class="about-content">
+              <span class="section-tag">Our Story</span>
+              <h2 class="section-title">Built From Real Experience, Not Theory</h2>
+              <p class="about-text">My name is <strong>Ashley</strong>, and Repair Hub was created from a real and frustrating experience.</p>
+              <p class="about-text">After my phone was stolen, I was left trying to get back to normal life as quickly as possible. I depended on my phone for everything — communication, work, banking, and daily tasks. During that stressful time, I searched for an affordable repair option and visited a local repair shop.</p>
+              <p class="about-text">I was told I would receive an original replacement screen at a much lower price than usual. I trusted what I was told because I needed my phone fixed quickly and couldn't afford delays or higher costs.</p>
+              <p class="about-text">Unfortunately, the repair did not meet the quality that was promised. That experience revealed a bigger problem: <strong>people don't really know</strong> who is actually qualified, whether parts are genuine, if pricing is fair, or what quality of service they'll receive.</p>
+              <p class="about-text"><strong>Repair Hub was built to change that.</strong></p>
+            </div>
+            <div class="about-cards">
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="eye"></i></div>
+                <h4>Our Purpose</h4>
+                <p>To make phone and device repairs more transparent, more trustworthy, and easier to access.</p>
+              </div>
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="target"></i></div>
+                <h4>Our Mission</h4>
+                <p>To rebuild trust in the repair industry by connecting people with verified technicians through transparent profiles, honest reviews, and clear pricing.</p>
+              </div>
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="globe"></i></div>
+                <h4>Our Vision</h4>
+                <p>A world where no one has to guess who to trust when repairing their device. Every choice should be backed by real reviews, real experience, and real transparency.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -182,18 +192,54 @@
             <div class="section-title-group">
               <span class="section-tag">Top Rated</span>
               <h2 class="section-title">Meet Our Best Technicians</h2>
-              <p class="section-subtitle">Verified, rated, and reviewed by real customers across Africa.</p>
+              <p class="section-subtitle">Verified, rated, and reviewed by real customers.</p>
             </div>
             <a href="#search" class="btn btn-outline btn-sm">View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
           </div>
           <div class="tech-showcase-grid" id="tech-showcase-mount"></div>
         </div>
 
+        <!-- WHY REPAIRHUB -->
+        <div class="section section-alt" id="why-section">
+          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
+            <span class="section-tag">Why Repair Hub</span>
+            <h2 class="section-title">Built From Real Experience</h2>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Repair Hub exists to solve a problem people face every day.</p>
+          </div>
+          <div class="why-grid">
+            <div class="why-item fade-up">
+              <div class="why-icon"><i data-lucide="badge-check"></i></div>
+              <h4>Verified Technician Profiles</h4>
+              <p>Every technician is verified. You know exactly who's fixing your device.</p>
+            </div>
+            <div class="why-item fade-up">
+              <div class="why-icon"><i data-lucide="receipt"></i></div>
+              <h4>Transparent Repair Info</h4>
+              <p>Fair pricing estimates and honest repair details — no hidden costs, no surprises.</p>
+            </div>
+            <div class="why-item fade-up">
+              <div class="why-icon"><i data-lucide="message-circle"></i></div>
+              <h4>Real Customer Reviews</h4>
+              <p>Only verified customers who completed repairs can leave reviews. Every rating is genuine.</p>
+            </div>
+            <div class="why-item fade-up">
+              <div class="why-icon"><i data-lucide="map-pin"></i></div>
+              <h4>Easy Discovery</h4>
+              <p>Find nearby technicians by location, specialty, and rating in seconds.</p>
+            </div>
+            <div class="why-item fade-up">
+              <div class="why-icon"><i data-lucide="shield"></i></div>
+              <h4>Safer Repair Decisions</h4>
+              <p>Make informed choices based on real data, not guesswork or word of mouth.</p>
+            </div>
+          </div>
+        </div>
+
         <!-- TRUST -->
-        <div class="section section-alt" id="trust-section">
+        <div class="section" id="trust-section">
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
             <span class="section-tag">Trust & Safety</span>
-            <h2 class="section-title">Why Millions Trust RepairHub</h2>
+            <h2 class="section-title">Why Millions Trust Repair Hub</h2>
             <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Every technician is verified. Every review is real. Every repair is protected.</p>
           </div>
           <div class="trust-grid">
@@ -206,7 +252,7 @@
             <div class="trust-card fade-up">
               <div class="trust-badge trust-badge-trusted"><i data-lucide="lock"></i></div>
               <h4>Secure Process</h4>
-              <p>Your repair is protected. Transparent pricing with no hidden charges.</p>
+              <p>Transparent pricing with no hidden charges. Your repair is protected.</p>
               <span class="trust-badge-label trust-badge-label-trusted">Trusted Technician</span>
             </div>
             <div class="trust-card fade-up">
@@ -235,15 +281,13 @@
         </div>
 
         <!-- TESTIMONIALS -->
-        <div class="section" id="testimonials">
+        <div class="section section-alt" id="testimonials">
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
             <span class="section-tag">Testimonials</span>
             <h2 class="section-title">Loved Across Africa</h2>
             <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Real stories from real customers.</p>
           </div>
-          <div class="testimonials-carousel" id="testimonials-carousel">
-            <div class="testimonials-track" id="testimonials-track"></div>
-          </div>
+          <div class="testimonials-carousel" id="testimonials-carousel"><div class="testimonials-track" id="testimonials-track"></div></div>
           <div class="testimonials-controls">
             <button class="carousel-btn" onclick="moveTestimonials(-1)"><i data-lucide="chevron-left"></i></button>
             <div class="carousel-dots" id="carousel-dots"></div>
@@ -252,37 +296,19 @@
         </div>
 
         <!-- FAQ -->
-        <div class="section section-alt" id="faq-section">
+        <div class="section" id="faq-section">
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
             <span class="section-tag">FAQ</span>
             <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Everything you need to know about RepairHub.</p>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Everything you need to know about Repair Hub.</p>
           </div>
           <div class="faq-list">
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>How does Mendie work?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Mendie is our AI repair assistant. Simply tell her what's wrong with your device — like "my screen is cracked" or "my phone won't charge" — and she'll help diagnose the problem, estimate costs, and connect you with the best technician near you.</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>How do I find a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Use our search directory to filter technicians by city, device brand, repair type, and verification status. Each technician profile shows ratings, reviews, specialties, response times, and contact details.</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>Are technicians verified?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Yes. We have three verification levels: Verified Technician (ID and skill verified), Trusted Technician (consistently high ratings), and Top Rated Technician (top performers with extensive track records). Look for the verification badges on each profile.</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>How much do repairs cost?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Use our Pricing Guide to get fair cost estimates for any repair across all major phone brands. Prices are based on real market data collected across Africa to help you avoid being overcharged.</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>How do I become a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Click "Become a Fundi" and fill out the application form with your shop details, experience, and specialties. Our team will review your application and verify your credentials before listing you on the platform.</p></div>
-            </div>
-            <div class="faq-item" onclick="toggleFaq(this)">
-              <div class="faq-question"><span>Can I leave reviews?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div>
-              <div class="faq-answer"><p>Absolutely. After completing a repair, you can rate your technician on quality, speed, communication, pricing, and professionalism. Reviews help other customers make informed decisions and help technicians build their reputation.</p></div>
-            </div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How does Mendie work?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Mendie is our AI repair assistant. Simply tell her what's wrong with your device — like "my screen is cracked" or "my phone won't charge" — and she'll help diagnose the problem, estimate costs, and connect you with the best technician near you.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How do I find a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Use our search directory to filter technicians by city, device brand, repair type, and verification status. Each profile shows ratings, reviews, specialties, response times, and contact details.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>Are technicians verified?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Yes. We have three verification levels: Verified Technician (ID and skill verified), Trusted Technician (consistently high ratings), and Top Rated Technician (top performers with extensive track records). Look for the verification badges on each profile.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How much do repairs cost?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Use our Pricing Guide to get fair cost estimates for any repair across all major phone brands. Prices are based on real market data collected across Africa to help you avoid being overcharged.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How do I become a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Click "Become a Tech" and fill out the application form with your shop details, experience, and specialties. Our team will review your application and verify your credentials before listing you on the platform.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>Can I leave reviews?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Absolutely. After completing a repair, you can rate your technician on quality, speed, communication, pricing, and professionalism. Reviews help other customers make informed decisions and help technicians build their reputation.</p></div></div>
           </div>
         </div>
 
@@ -291,10 +317,10 @@
           <div class="cta-bg"><div class="gradient-orb gradient-orb-cta-1"></div><div class="gradient-orb gradient-orb-cta-2"></div></div>
           <div class="cta-content">
             <h2 class="cta-title">Ready to Get It Fixed?</h2>
-            <p class="cta-subtitle">Join 50,000+ happy customers who found their perfect technician on RepairHub.</p>
+            <p class="cta-subtitle">Join 50,000+ happy customers who found their perfect technician on Repair Hub.</p>
             <div class="cta-buttons">
               <a href="#search" class="btn btn-white btn-lg">Find a Technician</a>
-              <a href="#get-listed" class="btn btn-outline-white btn-lg">Become a Fundi</a>
+              <a href="#get-listed" class="btn btn-outline-white btn-lg">Become a Tech</a>
             </div>
           </div>
         </div>
@@ -355,8 +381,8 @@
       <section id="view-get-listed" class="view" style="display:none;">
         <div class="section">
           <div class="get-listed-card">
-            <h2 style="font-size:28px;margin-bottom:8px;">Apply to Join RepairHub</h2>
-            <p style="color:var(--text-secondary);margin-bottom:32px;">Are you an experienced technician? Build your business profile, get verified, and connect with high-intent customers.</p>
+            <h2 style="font-size:28px;margin-bottom:8px;">Become a Technician on Repair Hub</h2>
+            <p style="color:var(--text-secondary);margin-bottom:32px;">Are you an experienced repair technician? Build your profile, get verified, and connect with customers who need your skills.</p>
             <form id="tech-onboard-form" onsubmit="handleOnboardSubmit(event)">
               <div class="form-grid-2"><div class="form-field"><label for="onboard-name">Shop or Business Name *</label><input type="text" id="onboard-name" required placeholder="e.g. Apex Repair Labs"></div><div class="form-field"><label for="onboard-owner">Owner's Full Name *</label><input type="text" id="onboard-owner" required placeholder="e.g. John Doe"></div></div>
               <div class="form-grid-2"><div class="form-field"><label for="onboard-city">City *</label><select id="onboard-city" required><option value="Harare">Harare, Zimbabwe</option><option value="Nairobi">Nairobi, Kenya</option><option value="Lagos">Lagos, Nigeria</option><option value="Johannesburg">Johannesburg, South Africa</option><option value="Accra">Accra, Ghana</option></select></div><div class="form-field"><label for="onboard-address">Shop Address *</label><input type="text" id="onboard-address" required placeholder="e.g. Shop 24, Joina City Mall"></div></div>
@@ -371,7 +397,7 @@
       <!-- ADMIN -->
       <section id="view-admin" class="view" style="display:none;">
         <div class="admin-view-wrapper">
-          <div class="admin-header"><div><h1 style="font-size:32px;">RepairHub Portal Admin</h1><p style="color:var(--text-secondary);margin-top:4px;">Monitor technician audits, moderation queues, and database.</p></div><button class="btn btn-outline" onclick="logoutAdmin()">Logout</button></div>
+          <div class="admin-header"><div>            <h1 style="font-size:32px;">Repair Hub Portal Admin</h1><p style="color:var(--text-secondary);margin-top:4px;">Monitor technician audits, moderation queues, and database.</p></div><button class="btn btn-outline" onclick="logoutAdmin()">Logout</button></div>
           <div class="admin-stats-grid"><div class="admin-stat-card"><div class="admin-stat-title">Active Technicians</div><div class="admin-stat-number" id="admin-stat-total-techs">0</div></div><div class="admin-stat-card"><div class="admin-stat-title">Average Rating</div><div class="admin-stat-number">4.82</div></div><div class="admin-stat-card"><div class="admin-stat-title">Verification Requests</div><div class="admin-stat-number" id="admin-stat-pending">0</div></div><div class="admin-stat-card"><div class="admin-stat-title">Total Clicks</div><div class="admin-stat-number">14,240</div></div></div>
           <div class="admin-tabs"><button class="admin-tab active" onclick="switchAdminTab('techs')" id="admin-tab-techs">Manage Technicians</button><button class="admin-tab" onclick="switchAdminTab('queue')" id="admin-tab-queue">Applications Queue</button></div>
           <div class="admin-table-card"><table class="admin-table" id="admin-data-table"><thead></thead><tbody id="admin-table-body"></tbody></table></div>
@@ -386,16 +412,20 @@
       <div class="footer-container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#home" class="nav-brand" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>RepairHub</span></a>
+            <a href="#home" class="nav-brand" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Repair Hub</span></a>
             <p class="footer-about">The most trusted platform for finding verified repair technicians across Africa. From broken to fixed — fast, transparent, and reliable.</p>
             <div class="footer-socials"><a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a><a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a><a href="#" aria-label="Facebook"><i data-lucide="facebook"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div>
           </div>
-          <div class="footer-col"><h4>Platform</h4><a href="#search">Find Technicians</a><a href="#pricing">Pricing Guide</a><a href="#get-listed">Become a Fundi</a><a href="#admin">Admin Portal</a></div>
+          <div class="footer-col"><h4>Platform</h4><a href="#search">Find Technicians</a><a href="#pricing">Pricing Guide</a><a href="#get-listed">Become a Tech</a><a href="#admin">Admin Portal</a></div>
           <div class="footer-col"><h4>Services</h4><a href="#">Phone Repairs</a><a href="#">Laptop Repairs</a><a href="#">Electrical Services</a><a href="#">Plumbing</a><a href="#">Solar Systems</a><a href="#">Appliance Repair</a></div>
           <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@repairhub.africa"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@repairhub.africa</a><a href="tel:+263772123456"><i data-lucide="phone" style="width:14px;height:14px;"></i> +263 772 123 456</a><a href="#"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Harare, Zimbabwe</a></div>
         </div>
         <div class="footer-newsletter"><h4>Stay Updated</h4><p>Get the latest repair tips and technician updates.</p><form class="newsletter-form" onsubmit="event.preventDefault();alert('Subscribed successfully!');"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn btn-primary">Subscribe</button></form></div>
-        <div class="footer-bottom"><p>&copy; 2026 RepairHub Africa. All rights reserved.</p><div class="footer-trust"><span><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Verified Techs</span><span><i data-lucide="lock" style="width:14px;height:14px;"></i> Data Protected</span><span><i data-lucide="award" style="width:14px;height:14px;"></i> Community Trusted</span></div></div>
+        <div class="founder-quote">
+          <p class="founder-quote-text">"I created Repair Hub after a bad repair experience when my phone was stolen. I realized how difficult it was to know who to trust. Repair Hub exists to make repair decisions clearer, safer, and more transparent for everyone."</p>
+          <p class="founder-quote-author">— Ashley, Founder of Repair Hub</p>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Repair Hub. All rights reserved.</p><div class="footer-trust"><span><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Verified Techs</span><span><i data-lucide="lock" style="width:14px;height:14px;"></i> Data Protected</span><span><i data-lucide="award" style="width:14px;height:14px;"></i> Community Trusted</span></div></div>
       </div>
     </footer>
 
@@ -409,20 +439,15 @@
       <div class="mendie-chat-panel" id="mendie-chat-box">
         <div class="mendie-chat-header">
           <div class="mendie-chat-header-user">
-            <div class="mendie-chat-avatar">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-            </div>
-            <div class="mendie-chat-header-text">
-              <h4>Mendie</h4>
-              <p><span class="mendie-status-dot"></span> Online now</p>
-            </div>
+            <div class="mendie-chat-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+            <div class="mendie-chat-header-text"><h4>Mendie</h4><p><span class="mendie-status-dot"></span> Online now</p></div>
           </div>
           <button class="mendie-chat-close" onclick="toggleMendieChat()"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
         </div>
         <div class="mendie-chat-messages" id="mendie-messages-log"></div>
         <div class="chat-quick-replies" id="mendie-quick-replies-mount"></div>
         <div class="mendie-chat-input-bar">
-          <input type="text" placeholder="tell me what's wrong..." id="mendie-input" onkeypress="handleMendieKeyPress(event)">
+          <input type="text" placeholder="Tell me what's wrong..." id="mendie-input" onkeypress="handleMendieKeyPress(event)">
           <button onclick="sendMendieMessage()" title="Send"><i data-lucide="send" style="width:16px;height:16px;"></i></button>
         </div>
       </div>
@@ -433,10 +458,10 @@
       <div class="modal-card">
         <div style="text-align:center;margin-bottom:24px;">
           <div style="width:56px;height:56px;border-radius:var(--radius-full);background:linear-gradient(135deg,var(--color-primary),var(--color-accent));display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
         </div>
-        <h3 class="modal-title">Welcome to RepairHub</h3>
+        <h3 class="modal-title">Welcome to Repair Hub</h3>
         <p class="modal-desc">Sign in to leave reviews, save favorites, and get personalized recommendations.</p>
         <button class="social-login-btn" onclick="mockGoogleAuth()">
           <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.68 1.54 14.98 1 12 1 7.35 1 3.39 3.65 1.5 7.5l3.87 3C6.3 7.7 8.94 5.04 12 5.04z"/><path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.37-4.89 3.37-8.5z"/><path fill="#FBBC05" d="M5.37 14.5c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3L1.5 6.9C.54 8.82 0 10.97 0 13.2s.54 4.38 1.5 6.3l3.87-3z"/><path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.1.74-2.5 1.18-4.3 1.18-3.06 0-5.7-2.66-6.63-5.46l-3.87 3C3.39 20.35 7.35 23 12 23z"/></svg>

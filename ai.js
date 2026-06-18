@@ -1,4 +1,4 @@
-// RepairHub — Mendie AI Assistant (Alive, Friendly, Smart)
+// Repair Hub — Mendie AI Assistant (Alive, Friendly, Smart)
 
 const MENDIE_GREETINGS = [
   "Need help fixing your device? 👋",

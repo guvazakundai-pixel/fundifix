@@ -1,8 +1,8 @@
-// RepairHub Premium Redesign — App Controller
+// Repair Hub Premium Redesign — App Controller
 
 let mapInstance = null;
 let mapMarkers = [];
-let activeUser = JSON.parse(localStorage.getItem('repairhub_user')) || null;
+let activeUser = JSON.parse(localStorage.getItem('repairhub_user_v2')) || null;
 
 const CITY_COORDS = {
   'Harare': [-17.8252, 31.0530],
@@ -517,10 +517,10 @@ function renderTechnicianProfile(id) {
             <div style="font-size:32px;font-weight:800;color:var(--color-primary);margin-top:4px;">$25 <span style="font-size:14px;font-weight:500;color:var(--text-secondary);">diagnostic included</span></div>
           </div>
           <div style="display:flex;flex-direction:column;gap:12px;">
-            <a href="https://wa.me/${tech.whatsapp}?text=Hi%20${encodeURIComponent(tech.name)},%20I%20found%20you%20on%20RepairHub%20and%20need%20a%20phone%20repair." target="_blank" class="btn btn-accent" style="height:48px;border-radius:var(--radius-md);font-size:15px;text-decoration:none;"><i data-lucide="message-square-text"></i> Message on WhatsApp</a>
+            <a href="https://wa.me/${tech.whatsapp}?text=Hi%20${encodeURIComponent(tech.name)},%20I%20found%20you%20on%20Repair%20Hub%20and%20need%20a%20phone%20repair." target="_blank" class="btn btn-accent" style="height:48px;border-radius:var(--radius-md);font-size:15px;text-decoration:none;"><i data-lucide="message-square-text"></i> Message on WhatsApp</a>
             <a href="tel:${tech.phone}" class="btn btn-outline" style="height:48px;border-radius:var(--radius-md);font-size:15px;text-decoration:none;"><i data-lucide="phone"></i> Call Direct</a>
           </div>
-          <div style="font-size:12px;color:var(--text-secondary);text-align:center;padding-top:8px;border-top:1px solid var(--color-border);"><i data-lucide="shield-check" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> RepairHub safe platform validation</div>
+          <div style="font-size:12px;color:var(--text-secondary);text-align:center;padding-top:8px;border-top:1px solid var(--color-border);"><i data-lucide="shield-check" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> Repair Hub safe platform validation</div>
         </div>
       </div>
     </div>`;
@@ -637,7 +637,7 @@ function closeAuthModal(e, isGuest = false) { if (!e || e.target === document.ge
 
 function mockGoogleAuth() {
   activeUser = { name: 'Guvaza Kundai', email: 'kundai.guvaza@gmail.com', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150' };
-  localStorage.setItem('repairhub_user', JSON.stringify(activeUser));
+  localStorage.setItem('repairhub_user_v2', JSON.stringify(activeUser));
   updateAuthBtnState();
   closeAuthModal(null, true);
   alert('Successfully signed in with Google!');
@@ -645,7 +645,7 @@ function mockGoogleAuth() {
 
 function mockEmailAuth() {
   activeUser = { name: 'Email User', email: 'user@repairhub.co.za', avatar: '' };
-  localStorage.setItem('repairhub_user', JSON.stringify(activeUser));
+  localStorage.setItem('repairhub_user_v2', JSON.stringify(activeUser));
   updateAuthBtnState();
   closeAuthModal(null, true);
   alert('Successfully signed in with Email!');
@@ -655,7 +655,7 @@ function updateAuthBtnState() {
   const btn = document.getElementById('auth-nav-btn');
   if (activeUser) {
     btn.textContent = activeUser.name.split(' ')[0];
-    btn.onclick = () => { if (confirm('Sign out of RepairHub?')) { activeUser = null; localStorage.removeItem('repairhub_user'); updateAuthBtnState(); } };
+    btn.onclick = () => { if (confirm('Sign out of Repair Hub?')) { activeUser = null; localStorage.removeItem('repairhub_user_v2'); updateAuthBtnState(); } };
   } else {
     btn.textContent = 'Sign In';
     btn.onclick = openAuthModal;

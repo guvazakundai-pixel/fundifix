@@ -1,4 +1,4 @@
-// RepairHub Seed Database
+// Repair Hub Seed Database
 
 const BRANDS = ['Apple', 'Samsung', 'Tecno', 'Infinix', 'Xiaomi', 'Huawei'];
 
@@ -320,10 +320,10 @@ function getLocalData(key, fallback) {
 }
 
 // Global mutable data references
-const techniciansDb = getLocalData('repairhub_technicians', SEED_TECHNICIANS);
-const reviewSubmissions = getLocalData('repairhub_submissions', []);
+const techniciansDb = getLocalData('repairhub_technicians_v2', SEED_TECHNICIANS);
+const reviewSubmissions = getLocalData('repairhub_submissions_v2', []);
 
 function saveToLocalStorage() {
-  localStorage.setItem('repairhub_technicians', JSON.stringify(techniciansDb));
-  localStorage.setItem('repairhub_submissions', JSON.stringify(reviewSubmissions));
+  localStorage.setItem('repairhub_technicians_v2', JSON.stringify(techniciansDb));
+  localStorage.setItem('repairhub_submissions_v2', JSON.stringify(reviewSubmissions));
 }
