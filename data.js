@@ -1,4 +1,4 @@
-// Repair Hub Seed Database
+// ZimFix Seed Database
 
 const BRANDS = ['Apple', 'Samsung', 'Tecno', 'Infinix', 'Xiaomi', 'Huawei'];
 

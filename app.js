@@ -1,4 +1,4 @@
-// Repair Hub Premium Redesign — App Controller
+// ZimFix Premium Redesign — App Controller
 
 let mapInstance = null;
 let mapMarkers = [];
@@ -529,7 +529,7 @@ function renderTechnicianProfile(id) {
             <a href="https://wa.me/${tech.whatsapp}?text=Hi%20${encodeURIComponent(tech.name)},%20I%20found%20you%20on%20Repair%20Hub%20and%20need%20a%20phone%20repair." target="_blank" class="btn btn-accent" style="height:48px;border-radius:var(--radius-md);font-size:15px;text-decoration:none;"><i data-lucide="message-square-text"></i> Message on WhatsApp</a>
             <a href="tel:${tech.phone}" class="btn btn-outline" style="height:48px;border-radius:var(--radius-md);font-size:15px;text-decoration:none;"><i data-lucide="phone"></i> Call Direct</a>
           </div>
-          <div style="font-size:12px;color:var(--text-secondary);text-align:center;padding-top:8px;border-top:1px solid var(--color-border);"><i data-lucide="shield-check" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> Repair Hub safe platform validation</div>
+          <div style="font-size:12px;color:var(--text-secondary);text-align:center;padding-top:8px;border-top:1px solid var(--color-border);"><i data-lucide="shield-check" style="width:14px;height:14px;display:inline-block;vertical-align:middle;margin-right:4px;"></i> ZimFix safe platform validation</div>
         </div>
       </div>
     </div>`;
@@ -722,7 +722,7 @@ function updateAuthBtnState() {
   const btn = document.getElementById('auth-nav-btn');
   if (activeUser) {
     btn.textContent = activeUser.name.split(' ')[0];
-    btn.onclick = () => { if (confirm('Sign out of Repair Hub?')) { activeUser = null; localStorage.removeItem('repairhub_user_v2'); updateAuthBtnState(); } };
+    btn.onclick = () => { if (confirm('Sign out of ZimFix?')) { activeUser = null; localStorage.removeItem('repairhub_user_v2'); updateAuthBtnState(); } };
   } else {
     btn.textContent = 'Sign In';
     btn.onclick = openAuthModal;

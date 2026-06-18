@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Repair Hub – Trusted Phone Repair Made Simple</title>
-  <meta name="description" content="Repair Hub connects you with verified, trusted repair technicians. Transparent pricing, real reviews, and no guesswork.">
+  <title>ZimFix – Find Trusted Repair Professionals</title>
+  <meta name="description" content="ZimFix helps you connect with experienced repair professionals who can bring your devices back to life. Transparent reviews, fair pricing, real trust.">
   <meta name="theme-color" content="#2563EB">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,18 +30,18 @@
       <div class="navbar-container">
         <a href="#home" class="nav-brand">
           <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          <span>Repair Hub</span>
+          <span>ZimFix</span>
         </a>
         <ul class="nav-links">
           <li><a href="#home" class="active" data-nav="home">Home</a></li>
           <li><a href="#search" data-nav="search">Technicians</a></li>
           <li><a href="#about" data-nav="about">About</a></li>
           <li><a href="#pricing" data-nav="pricing">Pricing</a></li>
-          <li><a href="#get-listed" data-nav="get-listed">Become a Tech</a></li>
+          <li><a href="#get-listed" data-nav="get-listed">Join As Pro</a></li>
         </ul>
         <div class="nav-actions">
           <button class="btn btn-ghost" id="auth-nav-btn" onclick="openAuthModal()">Sign In</button>
-          <a href="#search" class="btn btn-primary btn-glow">Find a Technician</a>
+          <a href="#search" class="btn btn-primary btn-glow">Find A Repair Professional</a>
         </div>
         <button class="mobile-menu-toggle" id="mobile-menu-toggle" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
       </div>
@@ -50,7 +50,7 @@
         <a href="#search" onclick="closeMobileMenu()">Find Technicians</a>
         <a href="#about" onclick="closeMobileMenu()">About</a>
         <a href="#pricing" onclick="closeMobileMenu()">Pricing</a>
-        <a href="#get-listed" onclick="closeMobileMenu()">Become a Tech</a>
+        <a href="#get-listed" onclick="closeMobileMenu()">Join As Pro</a>
         <button class="btn btn-primary" style="width:100%;margin-top:16px;" onclick="openAuthModal();closeMobileMenu();">Sign In</button>
       </div>
     </nav>
@@ -60,233 +60,127 @@
       <!-- HOME -->
       <section id="view-home" class="view">
 
-        <!-- HERO — Full-width cinematic background -->
+        <!-- HERO -->
         <div class="hero">
           <div class="hero-bg-image"></div>
           <div class="hero-overlay"></div>
           <div class="hero-particles" id="hero-particles"></div>
-          <div class="hero-content">
-            <div class="hero-badge fade-up">
-              <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
-              Trusted by 50,000+ customers in Zimbabwe
+          <div class="hero-inner">
+            <div class="hero-content">
+              <h1 class="hero-headline fade-up">Fix Your Device With <span class="headline-gradient">Confidence</span></h1>
+              <p class="hero-subheadline fade-up">Finding a trustworthy repair technician shouldn't be difficult. ZimFix helps you connect with experienced repair professionals who can bring your devices back to life.</p>
+              <div class="hero-ctas fade-up">
+                <a href="#search" class="btn btn-primary btn-glow btn-lg">
+                  <i data-lucide="search" style="width:18px;height:18px;"></i> Find A Repair Professional
+                </a>
+                <a href="#get-listed" class="btn btn-secondary btn-lg">
+                  <i data-lucide="user-plus" style="width:18px;height:18px;"></i> Become A Repair Professional
+                </a>
+              </div>
+              <div class="hero-trust-row fade-up">
+                <div class="hero-trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;color:var(--color-success);"></i><span>Trusted Repair Professionals</span></div>
+                <div class="hero-trust-item"><i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;"></i><span>Transparent Reviews</span></div>
+                <div class="hero-trust-item"><i data-lucide="message-circle" style="width:16px;height:16px;color:var(--color-accent);"></i><span>Reliable Communication</span></div>
+              </div>
+              <div class="hero-trust-row fade-up" style="margin-top:8px;">
+                <div class="hero-trust-item"><i data-lucide="tag" style="width:16px;height:16px;color:var(--color-purple);"></i><span>Fair Pricing</span></div>
+                <div class="hero-trust-item"><i data-lucide="map-pin" style="width:16px;height:16px;color:#EF4444;"></i><span>Local Repair Experts</span></div>
+              </div>
             </div>
-            <h1 class="hero-headline fade-up">Repair Hub – Trusted Phone Repair Made Simple</h1>
-            <p class="hero-subheadline fade-up">Find reliable repair technicians near you. Transparent pricing. Real reviews. No guesswork.</p>
-            <div class="hero-ctas fade-up">
-              <a href="#search" class="btn btn-primary btn-glow btn-lg">
-                <i data-lucide="search" style="width:18px;height:18px;"></i> Find a Technician
-              </a>
-              <a href="#get-listed" class="btn btn-secondary btn-lg">
-                <i data-lucide="user-plus" style="width:18px;height:18px;"></i> Become a Technician
-              </a>
-            </div>
-            <div class="hero-trust-row fade-up">
-              <div class="hero-trust-item"><i data-lucide="shield-check" style="width:16px;height:16px;color:var(--color-success);"></i><span>Verified Experts</span></div>
-              <div class="hero-trust-item"><i data-lucide="star" style="width:16px;height:16px;color:#F59E0B;"></i><span>4.9 Average Rating</span></div>
-              <div class="hero-trust-item"><i data-lucide="clock" style="width:16px;height:16px;color:var(--color-accent);"></i><span>5 Min Response</span></div>
+            <div class="hero-visual fade-up">
+              <div class="phone-showcase">
+                <div class="phone-glow phone-glow-red"></div>
+                <div class="phone-glow phone-glow-blue"></div>
+                <img src="zimfix-hero-phone.webp" alt="Smartphone with cracked screen on the left and repaired screen on the right" class="phone-image">
+                <div class="phone-label phone-label-broken"><i data-lucide="x-circle" style="width:14px;height:14px;"></i> Broken</div>
+                <div class="phone-label phone-label-fixed"><i data-lucide="check-circle" style="width:14px;height:14px;"></i> Fixed</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- STATS -->
-        <div class="stats-section" id="stats-section">
-          <div class="stats-container">
-            <div class="stat-item"><div class="stat-number" data-target="50000" data-suffix="+">0</div><div class="stat-label">Repairs Completed</div></div>
-            <div class="stat-divider"></div>
-            <div class="stat-item"><div class="stat-number" data-target="2000" data-suffix="+">0</div><div class="stat-label">Verified Technicians</div></div>
-            <div class="stat-divider"></div>
-            <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">0</div><div class="stat-label">Customer Satisfaction</div></div>
-            <div class="stat-divider"></div>
-            <div class="stat-item"><div class="stat-number" data-target="5" data-suffix=" min">0</div><div class="stat-label">Avg Response Time</div></div>
+        <!-- WHY ZIMFIX EXISTS -->
+        <div class="section section-alt" id="about">
+          <div class="about-layout">
+            <div class="about-content">
+              <span class="section-tag">Why ZimFix Exists</span>
+              <h2 class="section-title">Why ZimFix Exists</h2>
+              <p class="about-text">Most people have experienced the frustration of needing a device repaired and not knowing who to trust.</p>
+              <p class="about-text">A phone may contain years of memories, important contacts, business information, and personal data.</p>
+              <p class="about-text">Choosing the wrong repair technician can be stressful.</p>
+              <p class="about-text"><strong>ZimFix was created</strong> to make finding trusted repair professionals simpler, safer, and more transparent.</p>
+              <p class="about-text">Our goal is to help customers make informed decisions while helping skilled repair professionals grow their businesses and showcase their expertise.</p>
+            </div>
+            <div class="about-cards">
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="shield-check"></i></div>
+                <h4>Transparent</h4>
+                <p>Every profile, every review, every price — built so you know what to expect.</p>
+              </div>
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="users"></i></div>
+                <h4>Accountable</h4>
+                <p>Repair professionals earn their reputation through real results and real feedback.</p>
+              </div>
+              <div class="about-card fade-up">
+                <div class="about-card-icon"><i data-lucide="heart-handshake"></i></div>
+                <h4>Human</h4>
+                <p>ZimFix is built around the people who fix things and the people who need help.</p>
+              </div>
+            </div>
           </div>
         </div>
 
         <!-- HOW IT WORKS -->
-        <div class="section section-alt" id="how-it-works">
+        <div class="section" id="how-it-works">
           <div class="section-header">
             <div class="section-title-group">
               <span class="section-tag">How It Works</span>
-              <h2 class="section-title">Get Your Device Fixed in 3 Steps</h2>
-              <p class="section-subtitle">From broken to working — fast, transparent, and trusted.</p>
+              <h2 class="section-title">Getting Your Device Fixed Is Simple</h2>
+              <p class="section-subtitle">Three steps between you and a working device.</p>
             </div>
           </div>
           <div class="steps-grid">
             <div class="step-card fade-up">
               <div class="step-number">01</div>
-              <div class="step-icon-wrapper"><i data-lucide="search-code"></i></div>
+              <div class="step-icon-wrapper"><i data-lucide="clipboard-list"></i></div>
               <h3 class="step-title">Describe The Problem</h3>
-              <p class="step-desc">Tell us what's wrong with your device. Get instant fair price estimates so you never get overcharged.</p>
-              <a href="#search" class="step-cta">Start Diagnosis <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
+              <p class="step-desc">Tell us what is wrong with your device. Whether it's a cracked screen, battery issue, charging problem, water damage, software issue, or something else, start by identifying the problem.</p>
             </div>
             <div class="step-card fade-up">
               <div class="step-number">02</div>
-              <div class="step-icon-wrapper"><i data-lucide="sparkles"></i></div>
-              <h3 class="step-title">Talk To Kundai</h3>
-              <p class="step-desc">Our AI assistant helps identify the issue and recommends the best repair options near you.</p>
-              <button class="step-cta" onclick="openMendieChat(true)">Ask Kundai <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></button>
+              <div class="step-icon-wrapper"><i data-lucide="search"></i></div>
+              <h3 class="step-title">Find The Right Repair Professional</h3>
+              <p class="step-desc">Browse repair professionals based on their experience, specialties, customer feedback, and reputation. Compare profiles and choose the professional that best suits your needs.</p>
             </div>
             <div class="step-card fade-up">
               <div class="step-number">03</div>
-              <div class="step-icon-wrapper"><i data-lucide="user-check"></i></div>
-              <h3 class="step-title">Choose A Technician</h3>
-              <p class="step-desc">Browse verified professionals with real reviews and transparent pricing. Contact directly.</p>
-              <a href="#search" class="step-cta">View Technicians <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
+              <div class="step-icon-wrapper"><i data-lucide="wrench"></i></div>
+              <h3 class="step-title">Get It Fixed</h3>
+              <p class="step-desc">Connect with the repair professional, discuss the issue, and take the next step toward getting your device back in working condition.</p>
             </div>
           </div>
         </div>
 
-        <!-- SERVICES -->
-        <div class="section" id="services-section">
+        <!-- REPAIR PROFESSIONALS -->
+        <div class="section section-alt" id="rankings">
           <div class="section-header">
             <div class="section-title-group">
-              <span class="section-tag">Services</span>
-              <h2 class="section-title">Everything You Need, Fixed</h2>
-              <p class="section-subtitle">From cracked screens to solar installations — find verified experts for any repair.</p>
-            </div>
-          </div>
-          <div class="services-grid">
-            <div class="service-card fade-up" style="--accent:#2563EB"><div class="service-card-icon"><i data-lucide="smartphone"></i></div><h3>Phone Repairs</h3><p>Screen, battery, charging port, water damage — all brands covered.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#7C3AED"><div class="service-card-icon"><i data-lucide="laptop"></i></div><h3>Laptop Repairs</h3><p>Hardware diagnostics, screen replacement, keyboard, and motherboard fixes.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#F59E0B"><div class="service-card-icon"><i data-lucide="zap"></i></div><h3>Electrical</h3><p>Wiring, installations, circuit breakers, and safety inspections.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#06B6D4"><div class="service-card-icon"><i data-lucide="droplets"></i></div><h3>Plumbing</h3><p>Leaks, installations, drain cleaning, and emergency plumbing.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#10B981"><div class="service-card-icon"><i data-lucide="home"></i></div><h3>Home Maintenance</h3><p>Painting, carpentry, door locks, and general home repairs.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#F97316"><div class="service-card-icon"><i data-lucide="sun"></i></div><h3>Solar Systems</h3><p>Inverter repair, panel cleaning, battery replacement, and installations.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-            <div class="service-card fade-up" style="--accent:#EF4444"><div class="service-card-icon"><i data-lucide="refrigerator"></i></div><h3>Appliance Repairs</h3><p>Fridge, washing machine, microwave, and all household appliance fixes.</p><div class="service-card-arrow"><i data-lucide="arrow-right"></i></div></div>
-          </div>
-        </div>
-
-        <!-- ABOUT — OUR STORY -->
-        <div class="section section-alt" id="about">
-          <div class="about-layout">
-            <div class="about-content">
-              <span class="section-tag">Our Story</span>
-              <h2 class="section-title">Built From Real Experience, Not Theory</h2>
-              <p class="about-text">My name is <strong>Ashley</strong>, and Repair Hub was created from a real and frustrating experience.</p>
-              <p class="about-text">After my phone was stolen, I was left trying to get back to normal life as quickly as possible. I depended on my phone for everything — communication, work, banking, and daily tasks. During that stressful time, I searched for an affordable repair option and visited a local repair shop.</p>
-              <p class="about-text">I was told I would receive an original replacement screen at a much lower price than usual. I trusted what I was told because I needed my phone fixed quickly and couldn't afford delays or higher costs.</p>
-              <p class="about-text">Unfortunately, the repair did not meet the quality that was promised. That experience revealed a bigger problem: <strong>people don't really know</strong> who is actually qualified, whether parts are genuine, if pricing is fair, or what quality of service they'll receive.</p>
-              <p class="about-text"><strong>Repair Hub was built to change that.</strong></p>
-            </div>
-            <div class="about-cards">
-              <div class="about-card fade-up">
-                <div class="about-card-icon"><i data-lucide="eye"></i></div>
-                <h4>Our Purpose</h4>
-                <p>To make phone and device repairs more transparent, more trustworthy, and easier to access.</p>
-              </div>
-              <div class="about-card fade-up">
-                <div class="about-card-icon"><i data-lucide="target"></i></div>
-                <h4>Our Mission</h4>
-                <p>To rebuild trust in the repair industry by connecting people with verified technicians through transparent profiles, honest reviews, and clear pricing.</p>
-              </div>
-              <div class="about-card fade-up">
-                <div class="about-card-icon"><i data-lucide="globe"></i></div>
-                <h4>Our Vision</h4>
-                <p>A world where no one has to guess who to trust when repairing their device. Every choice should be backed by real reviews, real experience, and real transparency.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TECHNICIAN SHOWCASE -->
-        <div class="section" id="rankings">
-          <div class="section-header">
-            <div class="section-title-group">
-              <span class="section-tag">Top Rated</span>
-              <h2 class="section-title">Meet Our Best Technicians</h2>
-              <p class="section-subtitle">Verified, rated, and reviewed by real customers.</p>
+              <span class="section-tag">Repair Professionals</span>
+              <h2 class="section-title">Meet Trusted Repair Professionals</h2>
+              <p class="section-subtitle">Every repair professional has a profile that helps you learn more about their experience, specialties, and reputation.</p>
             </div>
             <a href="#search" class="btn btn-outline btn-sm">View All <i data-lucide="arrow-right" style="width:14px;height:14px;"></i></a>
           </div>
           <div class="tech-showcase-grid" id="tech-showcase-mount"></div>
         </div>
 
-        <!-- WHY REPAIRHUB -->
-        <div class="section section-alt" id="why-section">
+        <!-- REVIEWS -->
+        <div class="section" id="testimonials">
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
-            <span class="section-tag">Why Repair Hub</span>
-            <h2 class="section-title">Built From Real Experience</h2>
-            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Repair Hub exists to solve a problem people face every day.</p>
-          </div>
-          <div class="why-grid">
-            <div class="why-item fade-up">
-              <div class="why-icon"><i data-lucide="badge-check"></i></div>
-              <h4>Verified Technician Profiles</h4>
-              <p>Every technician is verified. You know exactly who's fixing your device.</p>
-            </div>
-            <div class="why-item fade-up">
-              <div class="why-icon"><i data-lucide="receipt"></i></div>
-              <h4>Transparent Repair Info</h4>
-              <p>Fair pricing estimates and honest repair details — no hidden costs, no surprises.</p>
-            </div>
-            <div class="why-item fade-up">
-              <div class="why-icon"><i data-lucide="message-circle"></i></div>
-              <h4>Real Customer Reviews</h4>
-              <p>Only verified customers who completed repairs can leave reviews. Every rating is genuine.</p>
-            </div>
-            <div class="why-item fade-up">
-              <div class="why-icon"><i data-lucide="map-pin"></i></div>
-              <h4>Easy Discovery</h4>
-              <p>Find nearby technicians by location, specialty, and rating in seconds.</p>
-            </div>
-            <div class="why-item fade-up">
-              <div class="why-icon"><i data-lucide="shield"></i></div>
-              <h4>Safer Repair Decisions</h4>
-              <p>Make informed choices based on real data, not guesswork or word of mouth.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- TRUST -->
-        <div class="section" id="trust-section">
-          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
-            <span class="section-tag">Trust & Safety</span>
-            <h2 class="section-title">Why Millions Trust Repair Hub</h2>
-            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Every technician is verified. Every review is real. Every repair is protected.</p>
-          </div>
-          <div class="trust-grid">
-            <div class="trust-card fade-up">
-              <div class="trust-badge trust-badge-verified"><i data-lucide="shield-check"></i></div>
-              <h4>Verified Professionals</h4>
-              <p>ID checks, skill assessments, and background verification for every technician.</p>
-              <span class="trust-badge-label trust-badge-label-verified">Verified Technician</span>
-            </div>
-            <div class="trust-card fade-up">
-              <div class="trust-badge trust-badge-trusted"><i data-lucide="lock"></i></div>
-              <h4>Secure Process</h4>
-              <p>Transparent pricing with no hidden charges. Your repair is protected.</p>
-              <span class="trust-badge-label trust-badge-label-trusted">Trusted Technician</span>
-            </div>
-            <div class="trust-card fade-up">
-              <div class="trust-badge trust-badge-top"><i data-lucide="star"></i></div>
-              <h4>Real Reviews</h4>
-              <p>Only verified customers who completed repairs can leave reviews.</p>
-              <span class="trust-badge-label trust-badge-label-top">Top Rated Technician</span>
-            </div>
-            <div class="trust-card fade-up">
-              <div class="trust-card-icon"><i data-lucide="award"></i></div>
-              <h4>Warranty Protection</h4>
-              <p>All repairs come with a minimum 30-day warranty for your peace of mind.</p>
-            </div>
-            <div class="trust-card fade-up">
-              <div class="trust-card-icon"><i data-lucide="clock"></i></div>
-              <h4>Fast Response</h4>
-              <p>Most technicians respond within 5 minutes. Get help when you need it.</p>
-            </div>
-          </div>
-          <div class="trust-stats-row fade-up">
-            <div class="trust-stat"><span class="trust-stat-number" data-target="500" data-suffix="+">0</span><span class="trust-stat-label">Technicians</span></div>
-            <div class="trust-stat"><span class="trust-stat-number" data-target="5000" data-suffix="+">0</span><span class="trust-stat-label">Repairs</span></div>
-            <div class="trust-stat"><span class="trust-stat-number" data-target="98" data-suffix="%">0</span><span class="trust-stat-label">Satisfaction</span></div>
-            <div class="trust-stat"><span class="trust-stat-number" data-target="4.8" data-suffix="">0</span><span class="trust-stat-label">Avg Rating</span></div>
-          </div>
-        </div>
-
-        <!-- TESTIMONIALS -->
-        <div class="section section-alt" id="testimonials">
-          <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
-            <span class="section-tag">Testimonials</span>
-            <h2 class="section-title">Loved in Harare</h2>
-            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Real stories from real customers.</p>
+            <span class="section-tag">Reviews</span>
+            <h2 class="section-title">Built On Real Experiences</h2>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Trust is earned through great service. Customer reviews help people make informed decisions and help repair professionals build strong reputations.</p>
           </div>
           <div class="testimonials-carousel" id="testimonials-carousel"><div class="testimonials-track" id="testimonials-track"></div></div>
           <div class="testimonials-controls">
@@ -296,20 +190,78 @@
           </div>
         </div>
 
-        <!-- FAQ -->
-        <div class="section" id="faq-section">
+        <!-- TRUST SECTION -->
+        <div class="section section-alt" id="trust-section">
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
-            <span class="section-tag">FAQ</span>
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">Everything you need to know about Repair Hub.</p>
+            <span class="section-tag">Trust</span>
+            <h2 class="section-title">Trust Is Everything</h2>
+            <p class="section-subtitle" style="max-width:600px;margin:8px auto 0;">When someone hands over a device for repair, they're placing trust in another person. That trust matters.</p>
           </div>
-          <div class="faq-list">
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How does Kundai work?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Kundai is our AI repair assistant. Simply tell her what's wrong with your device — like "my screen is cracked" or "my phone won't charge" — and she'll help diagnose the problem, estimate costs, and connect you with the best technician near you.</p></div></div>
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How do I find a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Use our search directory to filter technicians by city, device brand, repair type, and verification status. Each profile shows ratings, reviews, specialties, response times, and contact details.</p></div></div>
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>Are technicians verified?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Yes. We have three verification levels: Verified Technician (ID and skill verified), Trusted Technician (consistently high ratings), and Top Rated Technician (top performers with extensive track records). Look for the verification badges on each profile.</p></div></div>
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How much do repairs cost?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer">              <p>Use our Pricing Guide to get fair cost estimates for any repair across all major phone brands. Prices are based on real market data collected in Harare to help you avoid being overcharged.</p></div></div>
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>How do I become a technician?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Click "Become a Tech" and fill out the application form with your shop details, experience, and specialties. Our team will review your application and verify your credentials before listing you on the platform.</p></div></div>
-            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question"><span>Can I leave reviews?</span><i data-lucide="chevron-down" class="faq-chevron"></i></div><div class="faq-answer"><p>Absolutely. After completing a repair, you can rate your technician on quality, speed, communication, pricing, and professionalism. Reviews help other customers make informed decisions and help technicians build their reputation.</p></div></div>
+          <div class="trust-grid">
+            <div class="trust-card fade-up">
+              <div class="trust-badge trust-badge-verified"><i data-lucide="eye"></i></div>
+              <h4>Transparency</h4>
+              <p>Every profile, review, and rating is visible. You see what others have experienced before you decide.</p>
+              <span class="trust-badge-label trust-badge-label-verified">Open & Honest</span>
+            </div>
+            <div class="trust-card fade-up">
+              <div class="trust-badge trust-badge-trusted"><i data-lucide="shield-check"></i></div>
+              <h4>Accountability</h4>
+              <p>Repair professionals earn their reputation through real results. Bad service gets called out. Great service gets recognized.</p>
+              <span class="trust-badge-label trust-badge-label-trusted">Earned Trust</span>
+            </div>
+            <div class="trust-card fade-up">
+              <div class="trust-badge trust-badge-top"><i data-lucide="message-circle"></i></div>
+              <h4>Communication</h4>
+              <p>Good repair professionals communicate clearly. You deserve to know what's happening with your device.</p>
+              <span class="trust-badge-label trust-badge-label-top">Clear Updates</span>
+            </div>
+            <div class="trust-card fade-up">
+              <div class="trust-card-icon"><i data-lucide="award"></i></div>
+              <h4>Professionalism</h4>
+              <p>ZimFix brings together people who take their craft seriously and care about helping people solve real problems.</p>
+            </div>
+            <div class="trust-card fade-up">
+              <div class="trust-card-icon"><i data-lucide="heart"></i></div>
+              <h4>Fairness</h4>
+              <p>Pricing should be honest and predictable. No hidden costs, no surprises. Just fair work for fair pay.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOR REPAIR PROFESSIONALS -->
+        <div class="section" id="for-pros-section">
+          <div class="for-pros-layout">
+            <div class="for-pros-content">
+              <span class="section-tag">For Repair Professionals</span>
+              <h2 class="section-title">Grow Your Repair Business</h2>
+              <p class="about-text">ZimFix helps skilled repair professionals showcase their work, build credibility, and connect with more customers.</p>
+              <p class="about-text">Create a profile, highlight your experience, showcase your specialties, and build a reputation through customer feedback.</p>
+              <p class="about-text">Whether you're an independent technician or an established repair shop, ZimFix helps people discover the services you offer.</p>
+              <a href="#get-listed" class="btn btn-primary btn-lg" style="margin-top:24px;">Create Your Profile</a>
+            </div>
+            <div class="for-pros-visual">
+              <div class="for-pros-card fade-up">
+                <div class="for-pros-icon"><i data-lucide="user-check"></i></div>
+                <h4>Professional Profile</h4>
+                <p>Showcase your experience, specialties, and track record.</p>
+              </div>
+              <div class="for-pros-card fade-up">
+                <div class="for-pros-icon"><i data-lucide="star"></i></div>
+                <h4>Build Reputation</h4>
+                <p>Customer reviews highlight the quality of your work.</p>
+              </div>
+              <div class="for-pros-card fade-up">
+                <div class="for-pros-icon"><i data-lucide="trending-up"></i></div>
+                <h4>Get Discovered</h4>
+                <p>Reach more customers who are looking for your expertise.</p>
+              </div>
+              <div class="for-pros-card fade-up">
+                <div class="for-pros-icon"><i data-lucide="messages-square"></i></div>
+                <h4>Direct Communication</h4>
+                <p>Connect with customers directly and build lasting relationships.</p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -317,11 +269,10 @@
         <div class="cta-section">
           <div class="cta-bg"><div class="gradient-orb gradient-orb-cta-1"></div><div class="gradient-orb gradient-orb-cta-2"></div></div>
           <div class="cta-content">
-            <h2 class="cta-title">Ready to Get It Fixed?</h2>
-             <p class="cta-subtitle">Join 50,000+ happy customers in Harare who found their perfect technician on Repair Hub.</p>
+            <h2 class="cta-title">Ready To Get Your Device Fixed?</h2>
+            <p class="cta-subtitle">Whether you're dealing with a damaged screen, battery issue, charging problem, software fault, or another repair challenge, finding trusted help should be simple.</p>
             <div class="cta-buttons">
-              <a href="#search" class="btn btn-white btn-lg">Find a Technician</a>
-              <a href="#get-listed" class="btn btn-outline-white btn-lg">Become a Tech</a>
+              <a href="#search" class="btn btn-white btn-lg">Find A Repair Professional</a>
             </div>
           </div>
         </div>
@@ -356,7 +307,7 @@
           <div class="section-header" style="justify-content:center;text-align:center;flex-direction:column;">
             <span class="section-tag">Pricing Transparency</span>
             <h2 class="section-title">Standard Repair Pricing Index</h2>
-            <p class="section-subtitle" style="margin-top:10px;max-width:600px;">Don't get overcharged. Fair cost estimates based on real market data in Harare.</p>
+            <p class="section-subtitle" style="margin-top:10px;max-width:600px;">Don't get overcharged. Fair cost estimates based on real market data.</p>
           </div>
           <div class="pricing-tool-card">
             <h3 style="margin-bottom:24px;font-size:20px;">Calculate Repair Estimate</h3>
@@ -382,11 +333,11 @@
       <section id="view-get-listed" class="view" style="display:none;">
         <div class="section">
           <div class="get-listed-card">
-            <h2 style="font-size:28px;margin-bottom:8px;">Become a Technician on Repair Hub</h2>
-            <p style="color:var(--text-secondary);margin-bottom:32px;">Are you an experienced repair technician? Build your profile, get verified, and connect with customers who need your skills.</p>
+            <h2 style="font-size:28px;margin-bottom:8px;">Join ZimFix As A Repair Professional</h2>
+            <p style="color:var(--text-secondary);margin-bottom:32px;">Are you a skilled repair technician? Create your profile, get discovered, and connect with customers who need your expertise.</p>
             <form id="tech-onboard-form" onsubmit="handleOnboardSubmit(event)">
-              <div class="form-grid-2"><div class="form-field"><label for="onboard-name">Shop or Business Name *</label><input type="text" id="onboard-name" required placeholder="e.g. Apex Repair Labs"></div><div class="form-field"><label for="onboard-owner">Owner's Full Name *</label><input type="text" id="onboard-owner" required placeholder="e.g. John Doe"></div></div>
-              <div class="form-grid-2"><div class="form-field"><label for="onboard-city">City *</label><select id="onboard-city" required><option value="Harare">Harare, Zimbabwe</option></select></div><div class="form-field"><label for="onboard-address">Shop Address *</label><input type="text" id="onboard-address" required placeholder="e.g. Shop 24, Joina City Mall"></div></div>
+              <div class="form-grid-2"><div class="form-field"><label for="onboard-name">Shop or Business Name *</label><input type="text" id="onboard-name" required placeholder="e.g. Apex Repair Labs"></div><div class="form-field"><label for="onboard-owner">Your Full Name *</label><input type="text" id="onboard-owner" required placeholder="e.g. John Doe"></div></div>
+              <div class="form-grid-2"><div class="form-field"><label for="onboard-city">City *</label><select id="onboard-city" required><option value="Harare">Harare</option></select></div><div class="form-field"><label for="onboard-address">Shop Address *</label><input type="text" id="onboard-address" required placeholder="e.g. Shop 24, Joina City Mall"></div></div>
               <div class="form-grid-2"><div class="form-field"><label for="onboard-whatsapp">WhatsApp Number *</label><input type="tel" id="onboard-whatsapp" required placeholder="e.g. 263772123456"></div><div class="form-field"><label for="onboard-experience">Years of Experience *</label><input type="number" id="onboard-experience" required min="1" placeholder="e.g. 5"></div></div>
               <div class="form-field"><label>Specializations (Select Brands you fix best)</label><div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;"><label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Apple"> Apple</label><label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Samsung"> Samsung</label><label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Tecno"> Tecno</label><label style="font-weight:500;font-size:13.5px;"><input type="checkbox" name="specialty" value="Infinix"> Infinix</label></div></div>
               <button type="submit" class="btn btn-primary" style="width:100%;height:48px;border-radius:var(--radius-md);margin-top:16px;">Submit For Approval</button>
@@ -398,7 +349,7 @@
       <!-- ADMIN -->
       <section id="view-admin" class="view" style="display:none;">
         <div class="admin-view-wrapper">
-          <div class="admin-header"><div>            <h1 style="font-size:32px;">Repair Hub Portal Admin</h1><p style="color:var(--text-secondary);margin-top:4px;">Monitor technician audits, moderation queues, and database.</p></div><button class="btn btn-outline" onclick="logoutAdmin()">Logout</button></div>
+          <div class="admin-header"><div><h1 style="font-size:32px;">ZimFix Admin Portal</h1><p style="color:var(--text-secondary);margin-top:4px;">Monitor technician audits, moderation queues, and database.</p></div><button class="btn btn-outline" onclick="logoutAdmin()">Logout</button></div>
           <div class="admin-stats-grid"><div class="admin-stat-card"><div class="admin-stat-title">Active Technicians</div><div class="admin-stat-number" id="admin-stat-total-techs">0</div></div><div class="admin-stat-card"><div class="admin-stat-title">Average Rating</div><div class="admin-stat-number">4.82</div></div><div class="admin-stat-card"><div class="admin-stat-title">Verification Requests</div><div class="admin-stat-number" id="admin-stat-pending">0</div></div><div class="admin-stat-card"><div class="admin-stat-title">Total Clicks</div><div class="admin-stat-number">14,240</div></div></div>
           <div class="admin-tabs"><button class="admin-tab active" onclick="switchAdminTab('techs')" id="admin-tab-techs">Manage Technicians</button><button class="admin-tab" onclick="switchAdminTab('queue')" id="admin-tab-queue">Applications Queue</button></div>
           <div class="admin-table-card"><table class="admin-table" id="admin-data-table"><thead></thead><tbody id="admin-table-body"></tbody></table></div>
@@ -413,20 +364,15 @@
       <div class="footer-container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="#home" class="nav-brand" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>Repair Hub</span></a>
-             <p class="footer-about">The most trusted platform for finding verified repair technicians in Harare, Zimbabwe. From broken to fixed — fast, transparent, and reliable.</p>
-            <div class="footer-socials"><a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a><a href="#" aria-label="LinkedIn"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a></div>
+            <a href="#home" class="nav-brand" style="margin-bottom:16px;"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#brand-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>ZimFix</span></a>
+             <p class="footer-about">ZimFix helps you connect with experienced repair professionals who can bring your devices back to life. Transparent reviews, fair pricing, real trust.</p>
+            <div class="footer-socials"><a href="#" aria-label="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a><a href="#" aria-label="Instagram"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a><a href="#" aria-label="Facebook"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a></div>
           </div>
-          <div class="footer-col"><h4>Platform</h4><a href="#search">Find Technicians</a><a href="#pricing">Pricing Guide</a><a href="#get-listed">Become a Tech</a><a href="#admin">Admin Portal</a></div>
+          <div class="footer-col"><h4>Platform</h4><a href="#search">Find Repair Professionals</a><a href="#pricing">Pricing Guide</a><a href="#get-listed">Join As Pro</a></div>
           <div class="footer-col"><h4>Services</h4><a href="#">Phone Repairs</a><a href="#">Laptop Repairs</a><a href="#">Electrical Services</a><a href="#">Plumbing</a><a href="#">Solar Systems</a><a href="#">Appliance Repair</a></div>
-          <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@repairhub.africa"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@repairhub.africa</a><a href="tel:+263772123456"><i data-lucide="phone" style="width:14px;height:14px;"></i> +263 772 123 456</a><a href="#"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Harare, Zimbabwe</a></div>
+          <div class="footer-col"><h4>Contact</h4><a href="mailto:hello@zimfix.co.zw"><i data-lucide="mail" style="width:14px;height:14px;"></i> hello@zimfix.co.zw</a><a href="#"><i data-lucide="map-pin" style="width:14px;height:14px;"></i> Zimbabwe</a></div>
         </div>
-        <div class="footer-newsletter"><h4>Stay Updated</h4><p>Get the latest repair tips and technician updates.</p><form class="newsletter-form" onsubmit="event.preventDefault();alert('Subscribed successfully!');"><input type="email" placeholder="Enter your email" required><button type="submit" class="btn btn-primary">Subscribe</button></form></div>
-        <div class="founder-quote">
-          <p class="founder-quote-text">"I created Repair Hub after a bad repair experience when my phone was stolen. I realized how difficult it was to know who to trust. Repair Hub exists to make repair decisions clearer, safer, and more transparent for everyone."</p>
-          <p class="founder-quote-author">— Ashley, Founder of Repair Hub</p>
-        </div>
-        <div class="footer-bottom"><p>&copy; 2026 Repair Hub. All rights reserved.</p><div class="footer-trust"><span><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Verified Techs</span><span><i data-lucide="lock" style="width:14px;height:14px;"></i> Data Protected</span><span><i data-lucide="award" style="width:14px;height:14px;"></i> Community Trusted</span></div></div>
+        <div class="footer-bottom"><p>&copy; 2026 ZimFix. All rights reserved.</p><div class="footer-trust"><span><i data-lucide="shield-check" style="width:14px;height:14px;"></i> Trusted Pros</span><span><i data-lucide="lock" style="width:14px;height:14px;"></i> Data Protected</span><span><i data-lucide="award" style="width:14px;height:14px;"></i> Community Built</span></div></div>
       </div>
     </footer>
 
@@ -463,7 +409,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </div>
           </div>
-          <h3 class="modal-title">Welcome to Repair Hub</h3>
+          <h3 class="modal-title">Welcome to ZimFix</h3>
           <p class="modal-desc">Sign in to leave reviews, save favorites, and get personalized recommendations.</p>
           <button class="social-login-btn" onclick="mockGoogleAuth()">
             <svg style="width:20px;height:20px" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5.04c1.66 0 3.2.57 4.38 1.69l3.27-3.27C17.68 1.54 14.98 1 12 1 7.35 1 3.39 3.65 1.5 7.5l3.87 3C6.3 7.7 8.94 5.04 12 5.04z"/><path fill="#4285F4" d="M23.49 12.27c0-.81-.07-1.59-.2-2.34H12v4.44h6.44c-.28 1.47-1.11 2.72-2.36 3.56l3.66 2.84c2.14-1.98 3.37-4.89 3.37-8.5z"/><path fill="#FBBC05" d="M5.37 14.5c-.24-.72-.37-1.49-.37-2.3s.13-1.58.37-2.3L1.5 6.9C.54 8.82 0 10.97 0 13.2s.54 4.38 1.5 6.3l3.87-3z"/><path fill="#34A853" d="M12 23c3.24 0 5.97-1.07 7.96-2.91l-3.66-2.84c-1.1.74-2.5 1.18-4.3 1.18-3.06 0-5.7-2.66-6.63-5.46l-3.87 3C3.39 20.35 7.35 23 12 23z"/></svg>
@@ -482,11 +428,11 @@
           <p class="modal-desc" style="text-align:left;">Enter your name and email to create an account or sign back in.</p>
           <div class="form-field" style="margin-bottom:16px;">
             <label for="auth-email-name" style="font-size:13px;font-weight:600;">Full Name</label>
-            <input type="text" id="auth-email-name" placeholder="e.g. Ashley Moyo" style="width:100%;padding:12px;border-radius:var(--radius-md);border:1px solid var(--color-border);font-size:14px;outline:none;background:var(--bg-secondary);" onfocus="this.style.borderColor='var(--color-primary)';this.style.boxShadow='0 0 0 3px var(--color-primary-light)'" onblur="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'">
+            <input type="text" id="auth-email-name" placeholder="e.g. Tendai Moyo" style="width:100%;padding:12px;border-radius:var(--radius-md);border:1px solid var(--color-border);font-size:14px;outline:none;background:var(--bg-secondary);" onfocus="this.style.borderColor='var(--color-primary)';this.style.boxShadow='0 0 0 3px var(--color-primary-light)'" onblur="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'">
           </div>
           <div class="form-field" style="margin-bottom:20px;">
             <label for="auth-email-input" style="font-size:13px;font-weight:600;">Email Address</label>
-            <input type="email" id="auth-email-input" placeholder="e.g. ashley@gmail.com" style="width:100%;padding:12px;border-radius:var(--radius-md);border:1px solid var(--color-border);font-size:14px;outline:none;background:var(--bg-secondary);" onfocus="this.style.borderColor='var(--color-primary)';this.style.boxShadow='0 0 0 3px var(--color-primary-light)'" onblur="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'">
+            <input type="email" id="auth-email-input" placeholder="e.g. tendai@gmail.com" style="width:100%;padding:12px;border-radius:var(--radius-md);border:1px solid var(--color-border);font-size:14px;outline:none;background:var(--bg-secondary);" onfocus="this.style.borderColor='var(--color-primary)';this.style.boxShadow='0 0 0 3px var(--color-primary-light)'" onblur="this.style.borderColor='var(--color-border)';this.style.boxShadow='none'">
           </div>
           <button class="btn btn-primary" style="width:100%;height:48px;border-radius:var(--radius-md);font-size:15px;" onclick="submitEmailAuth()">Sign In</button>
         </div>

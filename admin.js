@@ -1,4 +1,4 @@
-// Repair Hub — Admin Panel Controller
+// ZimFix — Admin Panel Controller
 
 let currentAdminTab = 'techs';
 let isAdminAuthenticated = JSON.parse(localStorage.getItem('repairhub_admin_auth_v2')) || false;
@@ -75,7 +75,7 @@ function restoreAdminShell() {
     <div class="admin-view-wrapper">
       <div class="admin-header">
         <div>
-          <h1 style="font-size: 32px;">Repair Hub Portal Admin</h1>
+          <h1 style="font-size: 32px;">ZimFix Portal Admin</h1>
           <p style="color:var(--text-secondary); margin-top: 4px;">Monitor technician audits, moderation queues, and database variables.</p>
         </div>
         <button class="btn btn-outline" onclick="logoutAdmin()">Logout</button>

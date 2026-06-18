@@ -1,4 +1,4 @@
-// Repair Hub — Kundai AI Assistant (Powered by Groq via serverless proxy)
+// ZimFix — Kundai AI Assistant (Powered by Groq via serverless proxy)
 
 const MENDIE_API_URL = '/api/mendie';
 
