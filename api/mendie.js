@@ -9,82 +9,93 @@ Examples:
 
 When recommending a technician, use: [TECH_CARD:id] where id is the technician's numeric id.`;
 
+const MODELS = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
   const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-  console.log('GEMINI_API_KEY present:', !!GEMINI_API_KEY, 'length:', GEMINI_API_KEY ? GEMINI_API_KEY.length : 0);
   if (!GEMINI_API_KEY) {
     console.error('GEMINI_API_KEY is not set');
-    return res.status(500).json({ error: 'API key not configured' });
+    return res.status(200).json({ reply: "I'm having trouble right now. Could you try again in a moment? 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast'] });
   }
 
   const { messages, context } = req.body;
 
-  try {
-    const systemPrompt = MENDIE_SYSTEM_PROMPT + '\n\n' + (context || '');
+  const systemPrompt = MENDIE_SYSTEM_PROMPT + '\n\n' + (context || '');
 
-    const trimmedMessages = (messages || []).slice(-10).map(msg => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.text }]
-    }));
+  const trimmedMessages = (messages || []).slice(-10).map(msg => ({
+    role: msg.role === 'user' ? 'user' : 'model',
+    parts: [{ text: msg.text }]
+  }));
 
-    const requestBody = {
-      contents: trimmedMessages,
-      systemInstruction: { parts: [{ text: systemPrompt }] },
-      generationConfig: {
-        temperature: 0.8,
-        maxOutputTokens: 300
-      }
-    };
+  const requestBody = {
+    contents: trimmedMessages,
+    systemInstruction: { parts: [{ text: systemPrompt }] },
+    generationConfig: {
+      temperature: 0.8,
+      maxOutputTokens: 300
+    }
+  };
 
-    const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
-
-    const response = await fetch(GEMINI_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(requestBody)
-    });
-
-    const rawText = await response.text();
-    let data;
-
+  for (const model of MODELS) {
     try {
-      data = JSON.parse(rawText);
-    } catch (parseErr) {
-      console.error('Failed to parse Gemini response:', rawText.substring(0, 200));
-      return res.status(200).json({ reply: "I'm having trouble right now. Could you try again? 🔧", suggestions: [] });
-    }
+      const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`;
 
-    if (!response.ok) {
-      console.error('Gemini API error:', response.status, JSON.stringify(data).substring(0, 500));
-      return res.status(200).json({ reply: "I'm having trouble right now. Could you try again? 🔧", suggestions: [], debug: { status: response.status, error: data } });
-    }
+      const response = await fetch(GEMINI_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(requestBody),
+        signal: AbortSignal.timeout(30000)
+      });
 
-    if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
-      let reply = data.candidates[0].content.parts[0].text.trim();
-      let suggestions = [];
+      const rawText = await response.text();
+      let data;
 
-      const suggestionsMatch = reply.match(/\[SUGGESTIONS:([^\]]+)\]/);
-      if (suggestionsMatch) {
-        suggestions = suggestionsMatch[1].split('|').map(s => s.trim()).filter(s => s.length > 0);
-        reply = reply.replace(suggestionsMatch[0], '').trim();
+      try {
+        data = JSON.parse(rawText);
+      } catch (parseErr) {
+        console.error('Failed to parse Gemini response:', rawText.substring(0, 200));
+        continue;
       }
 
-      return res.status(200).json({ reply, suggestions });
+      if (!response.ok) {
+        const errorCode = data?.error?.code;
+        if (errorCode === 429) {
+          console.warn(`Model ${model} quota exceeded, trying next...`);
+          continue;
+        }
+        console.error('Gemini API error:', response.status, JSON.stringify(data).substring(0, 300));
+        continue;
+      }
+
+      if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
+        let reply = data.candidates[0].content.parts[0].text.trim();
+        let suggestions = [];
+
+        const suggestionsMatch = reply.match(/\[SUGGESTIONS:([^\]]+)\]/);
+        if (suggestionsMatch) {
+          suggestions = suggestionsMatch[1].split('|').map(s => s.trim()).filter(s => s.length > 0);
+          reply = reply.replace(suggestionsMatch[0], '').trim();
+        }
+
+        return res.status(200).json({ reply, suggestions });
+      }
+
+      if (data.candidates && data.candidates[0] && data.candidates[0].finishReason === 'SAFETY') {
+        return res.status(200).json({ reply: "I can't help with that topic, but I'm here to assist with device repairs! What device issue are you having? 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast'] });
+      }
+
+      console.error('Unexpected Gemini response format:', JSON.stringify(data).substring(0, 500));
+      continue;
+
+    } catch (error) {
+      console.error(`Model ${model} error:`, error.message);
+      continue;
     }
-
-    if (data.candidates && data.candidates[0] && data.candidates[0].finishReason === 'SAFETY') {
-      return res.status(200).json({ reply: "I can't help with that topic, but I'm here to assist with device repairs! What device issue are you having? 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast'] });
-    }
-
-    console.error('Unexpected Gemini response format:', JSON.stringify(data).substring(0, 500));
-    return res.status(200).json({ reply: "I'm having trouble right now. Could you try again? 🔧", suggestions: [] });
-
-  } catch (error) {
-    console.error('Kundai API error:', error.message);
-    return res.status(200).json({ reply: "Something went wrong on my end. Please try again! 🔧", suggestions: [] });
   }
+
+  return res.status(200).json({ reply: "I'm having trouble connecting right now. Please try again in a minute! 🔧", suggestions: ['My screen is cracked', 'Phone not charging', 'Battery draining fast', 'Water damage'] });
 }
