@@ -1,12 +1,12 @@
-// Repair Hub — Kundai AI Assistant (Powered by Google Gemini via serverless proxy)
+// Repair Hub — Kundai AI Assistant (Powered by Groq via serverless proxy)
 
 const MENDIE_API_URL = '/api/mendie';
 
 const MENDIE_GREETINGS = [
-  "Need help fixing your device? 👋",
+  "Need help fixing your device? ⚡",
   "Cracked screen? I can help! 💪",
-  "Tell Kundai what's broken 🔧",
-  "Quick diagnosis, right here ✨"
+  "Tell Kundai what's broken ⚡",
+  "Quick diagnosis, right here ⚡"
 ];
 
 const MENDIE_INITIAL_SUGGESTIONS = [
