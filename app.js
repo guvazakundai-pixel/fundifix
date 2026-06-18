@@ -121,16 +121,24 @@ function animateCounter(el) {
 
 // ROUTING
 function initRouter() {
+  const HOME_SECTIONS = ['#about', '#services-section', '#rankings', '#why-section', '#trust-section', '#testimonials', '#faq-section', '#stats-section', '#how-it-works'];
   const handleRoute = () => {
     const hash = window.location.hash || '#home';
     const views = document.querySelectorAll('.view');
     views.forEach(v => v.style.display = 'none');
     document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
 
-    if (hash === '#home' || hash.startsWith('#home')) {
+    if (hash === '#home' || hash.startsWith('#home') || HOME_SECTIONS.includes(hash)) {
       document.getElementById('view-home').style.display = 'block';
       document.querySelector('[data-nav="home"]')?.classList.add('active');
-      window.scrollTo(0, 0);
+      if (HOME_SECTIONS.includes(hash)) {
+        setTimeout(() => {
+          const el = document.querySelector(hash);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      } else {
+        window.scrollTo(0, 0);
+      }
     } else if (hash.startsWith('#search')) {
       document.getElementById('view-search').style.display = 'block';
       document.querySelector('[data-nav="search"]')?.classList.add('active');
@@ -146,9 +154,14 @@ function initRouter() {
       calculatePagePrice();
     } else if (hash.startsWith('#get-listed')) {
       document.getElementById('view-get-listed').style.display = 'block';
+      document.querySelector('[data-nav="get-listed"]')?.classList.add('active');
     } else if (hash.startsWith('#admin')) {
       document.getElementById('view-admin').style.display = 'block';
       initAdminPanel();
+    } else {
+      document.getElementById('view-home').style.display = 'block';
+      document.querySelector('[data-nav="home"]')?.classList.add('active');
+      window.scrollTo(0, 0);
     }
 
     lucide.createIcons();
