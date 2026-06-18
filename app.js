@@ -606,6 +606,12 @@ function renderRankingCol(id, items, type) {
 // ONBOARD
 function handleOnboardSubmit(e) {
   e.preventDefault();
+  const form = document.getElementById('tech-onboard-form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  submitBtn.innerHTML = '<span style="display:inline-flex;align-items:center;gap:8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin 1s linear infinite;"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Submitting...</span>';
+  submitBtn.disabled = true;
+
   const newTech = {
     id: techniciansDb.length + 1,
     name: document.getElementById('onboard-name').value,
@@ -623,32 +629,84 @@ function handleOnboardSubmit(e) {
     specializations: Array.from(document.querySelectorAll('input[name="specialty"]:checked')).map(c => c.value) || ['Apple', 'Samsung'],
     responseSpeed: 'Responds within 10 mins',
     workingHours: { weekday: '8:00 AM - 5:00 PM', Saturday: '9:00 AM - 1:00 PM', Sunday: 'Closed' },
-    reviews: []
+    reviews: [],
+    submittedAt: new Date().toISOString()
   };
   techniciansDb.push(newTech);
   saveToLocalStorage();
-  alert('Application submitted successfully! Pending admin verification.');
-  window.location.hash = '#home';
+
+  setTimeout(() => {
+    const card = document.querySelector('.get-listed-card');
+    card.innerHTML = `
+      <div style="text-align:center;padding:40px 0;">
+        <div style="width:72px;height:72px;border-radius:50%;background:rgba(16,185,129,0.1);display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h2 style="font-size:28px;margin-bottom:8px;">Application Submitted!</h2>
+        <p style="color:var(--text-secondary);margin-bottom:8px;font-size:15px;">Thank you, <strong>${newTech.owner}</strong>. Your shop <strong>${newTech.name}</strong> has been registered.</p>
+        <p style="color:var(--text-secondary);margin-bottom:24px;font-size:14px;">Our team will review your application and verify your credentials. You'll appear in the directory once approved.</p>
+        <div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:20px;text-align:left;margin-bottom:24px;">
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="color:var(--text-muted);font-size:13px;">Shop Name</span><span style="font-weight:600;font-size:14px;">${newTech.name}</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="color:var(--text-muted);font-size:13px;">City</span><span style="font-weight:600;font-size:14px;">${newTech.city}</span></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:8px;"><span style="color:var(--text-muted);font-size:13px;">Experience</span><span style="font-weight:600;font-size:14px;">${newTech.experience}</span></div>
+          <div style="display:flex;justify-content:space-between;"><span style="color:var(--text-muted);font-size:13px;">Status</span><span style="font-weight:700;font-size:14px;color:#F59E0B;">⏳ Pending Verification</span></div>
+        </div>
+        <a href="#home" class="btn btn-primary" style="text-decoration:none;">Back to Home</a>
+      </div>`;
+    lucide.createIcons();
+  }, 1500);
 }
 
 // AUTH
-function openAuthModal() { document.getElementById('auth-modal').classList.add('active'); }
+function openAuthModal() {
+  document.getElementById('auth-modal').classList.add('active');
+  showAuthChoices();
+}
 function closeAuthModal(e, isGuest = false) { if (!e || e.target === document.getElementById('auth-modal') || isGuest) document.getElementById('auth-modal').classList.remove('active'); }
 
+function showAuthChoices() {
+  document.getElementById('auth-choices').style.display = 'block';
+  document.getElementById('auth-email-form').style.display = 'none';
+  document.getElementById('auth-success').style.display = 'none';
+  lucide.createIcons();
+}
+
+function showEmailForm() {
+  document.getElementById('auth-choices').style.display = 'none';
+  document.getElementById('auth-email-form').style.display = 'block';
+  document.getElementById('auth-email-name').focus();
+  lucide.createIcons();
+}
+
+function showAuthSuccess(title, desc) {
+  document.getElementById('auth-choices').style.display = 'none';
+  document.getElementById('auth-email-form').style.display = 'none';
+  document.getElementById('auth-success').style.display = 'block';
+  document.getElementById('auth-success-title').textContent = title;
+  document.getElementById('auth-success-desc').textContent = desc;
+  lucide.createIcons();
+}
+
 function mockGoogleAuth() {
-  activeUser = { name: 'Guvaza Kundai', email: 'kundai.guvaza@gmail.com', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150' };
+  activeUser = { name: 'Guvaza Kundai', email: 'kundai.guvaza@gmail.com', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150', method: 'google', joinedAt: new Date().toISOString() };
   localStorage.setItem('repairhub_user_v2', JSON.stringify(activeUser));
   updateAuthBtnState();
-  closeAuthModal(null, true);
-  alert('Successfully signed in with Google!');
+  showAuthSuccess('Welcome, ' + activeUser.name.split(' ')[0] + '!', 'You\'re now signed in with Google. You can leave reviews and track your repairs.');
 }
 
 function mockEmailAuth() {
-  activeUser = { name: 'Email User', email: 'user@repairhub.co.za', avatar: '' };
+  showEmailForm();
+}
+
+function submitEmailAuth() {
+  const name = document.getElementById('auth-email-name').value.trim();
+  const email = document.getElementById('auth-email-input').value.trim();
+  if (!name) { document.getElementById('auth-email-name').style.borderColor = 'var(--color-danger)'; return; }
+  if (!email || !email.includes('@')) { document.getElementById('auth-email-input').style.borderColor = 'var(--color-danger)'; return; }
+  activeUser = { name: name, email: email, avatar: '', method: 'email', joinedAt: new Date().toISOString() };
   localStorage.setItem('repairhub_user_v2', JSON.stringify(activeUser));
   updateAuthBtnState();
-  closeAuthModal(null, true);
-  alert('Successfully signed in with Email!');
+  showAuthSuccess('Welcome, ' + name.split(' ')[0] + '!', 'You\'re now signed in. You can leave reviews and track your repairs.');
 }
 
 function updateAuthBtnState() {

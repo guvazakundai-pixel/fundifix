@@ -78,6 +78,8 @@ h1,h2,h3,h4,h5,h6 {
 ::selection { background: var(--color-primary); color: #fff; }
 
 /* ANIMATIONS */
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
