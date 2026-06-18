@@ -132,148 +132,6 @@ const SEED_TECHNICIANS = [
   },
   {
     id: 2,
-    name: 'SmartFix Nairobi',
-    owner: 'Josphat Mwangi',
-    profilePic: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    coverPic: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&auto=format&fit=crop&q=80',
-    verified: true,
-    rating: 4.8,
-    reviewsCount: 212,
-    city: 'Nairobi',
-    location: '1st Floor, Junction Mall, Ngong Road, Nairobi',
-    coordinates: { lat: -1.3006, lng: 36.7617 },
-    whatsapp: '254712345678',
-    phone: '+254712345678',
-    experience: '8 years',
-    repairsCompleted: '3,200+',
-    specializations: ['Apple', 'Samsung', 'Tecno', 'Infinix'],
-    responseSpeed: 'Responds within 10 mins',
-    workingHours: { weekday: '8:00 AM - 7:00 PM', Saturday: '9:00 AM - 5:00 PM', Sunday: '10:00 AM - 2:00 PM' },
-    workGalleries: [
-      { before: 'https://images.unsplash.com/photo-1562408590-e32931084e23?w=300&q=80', after: 'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=300&q=80', label: 'Samsung charging port repair' }
-    ],
-    reviews: [
-      {
-        id: 201,
-        user: 'Amani Wanjiku',
-        rating: 5,
-        date: '2026-06-14',
-        comment: 'Excellent service. They repaired my Infinix Note battery quickly. They even gave me a 3-month warranty card.',
-        aspects: { quality: 5, speed: 5, communication: 5, pricing: 5, professionalism: 5 }
-      },
-      {
-        id: 202,
-        user: 'David Kiprop',
-        rating: 4,
-        date: '2026-06-03',
-        comment: 'Original parts are a bit expensive but the repair quality is unmatched. Safe environment inside the mall.',
-        aspects: { quality: 5, speed: 4, communication: 4, pricing: 3, professionalism: 5 }
-      }
-    ]
-  },
-  {
-    id: 3,
-    name: 'Computer Village TechLab',
-    owner: 'Chidi Okafor',
-    profilePic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
-    coverPic: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80',
-    verified: true,
-    rating: 4.7,
-    reviewsCount: 342,
-    city: 'Lagos',
-    location: 'Shop 12, Pepple Street, Computer Village, Ikeja, Lagos',
-    coordinates: { lat: 6.5966, lng: 3.3444 },
-    whatsapp: '2348031234567',
-    phone: '+2348031234567',
-    experience: '10 years',
-    repairsCompleted: '5,000+',
-    specializations: ['Tecno', 'Infinix', 'Xiaomi', 'Samsung'],
-    responseSpeed: 'Responds within 2 mins',
-    workingHours: { weekday: '8:30 AM - 6:00 PM', Saturday: '9:00 AM - 6:00 PM', Sunday: 'Closed' },
-    workGalleries: [],
-    reviews: [
-      {
-        id: 301,
-        user: 'Olumide Adebayo',
-        rating: 5,
-        date: '2026-06-15',
-        comment: 'Chidi is the king of Tecno micro-soldering. Fixed a dead motherboard that three other shops said was unrepairable.',
-        aspects: { quality: 5, speed: 5, communication: 4, pricing: 5, professionalism: 4 }
-      },
-      {
-        id: 302,
-        user: 'Chioma Nwachukwu',
-        rating: 4,
-        date: '2026-05-10',
-        comment: 'Very fast and very cheap. Computer village is crowded, but Chidi has a clean small office upstairs where you can wait safely.',
-        aspects: { quality: 4, speed: 5, communication: 4, pricing: 5, professionalism: 4 }
-      }
-    ]
-  },
-  {
-    id: 4,
-    name: 'iAmplify Repairs',
-    owner: 'Le Roux Venter',
-    profilePic: 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=150&auto=format&fit=crop&q=80',
-    coverPic: 'https://images.unsplash.com/photo-1601524909162-be87252be298?w=800&auto=format&fit=crop&q=80',
-    verified: true,
-    rating: 4.9,
-    reviewsCount: 98,
-    city: 'Johannesburg',
-    location: 'Shop G12, Rosebank Mall, Rosebank, Johannesburg',
-    coordinates: { lat: -26.1458, lng: 28.0431 },
-    whatsapp: '27711234567',
-    phone: '+27711234567',
-    experience: '5 years',
-    repairsCompleted: '950+',
-    specializations: ['Apple', 'Xiaomi'],
-    responseSpeed: 'Responds within 15 mins',
-    workingHours: { weekday: '9:00 AM - 6:00 PM', Saturday: '9:00 AM - 5:00 PM', Sunday: '9:00 AM - 2:00 PM' },
-    workGalleries: [],
-    reviews: [
-      {
-        id: 401,
-        user: 'Sipho Ndlovu',
-        rating: 5,
-        date: '2026-06-08',
-        comment: 'Specializes in iPhones. Completely pristine screen restoration. They only use certified refurbished or genuine pull-offs.',
-        aspects: { quality: 5, speed: 5, communication: 5, pricing: 4, professionalism: 5 }
-      }
-    ]
-  },
-  {
-    id: 5,
-    name: 'Accra Mobile Hub',
-    owner: 'Kofi Mensah',
-    profilePic: 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=150&auto=format&fit=crop&q=80',
-    coverPic: 'https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&auto=format&fit=crop&q=80',
-    verified: false,
-    rating: 4.6,
-    reviewsCount: 64,
-    city: 'Accra',
-    location: 'Near Kwame Nkrumah Interchange, Circle, Accra',
-    coordinates: { lat: 5.5600, lng: -0.2078 },
-    whatsapp: '233244123456',
-    phone: '+233244123456',
-    experience: '4 years',
-    repairsCompleted: '600+',
-    specializations: ['Infinix', 'Tecno', 'Samsung'],
-    responseSpeed: 'Responds within 8 mins',
-    workingHours: { weekday: '8:00 AM - 6:00 PM', Saturday: '8:00 AM - 5:00 PM', Sunday: 'Closed' },
-    workGalleries: [],
-    reviews: [
-      {
-        id: 501,
-        user: 'Ama Serwaa',
-        rating: 5,
-        date: '2026-06-01',
-        comment: 'Affordable. Replaced my charging pin in 30 minutes. Coffee offered while you wait.',
-        aspects: { quality: 4, speed: 5, communication: 5, pricing: 5, professionalism: 4 }
-      }
-    ]
-  },
-  {
-    id: 6,
     name: 'Apex Phone Lab',
     owner: 'Pardon Mandizvidza',
     profilePic: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&auto=format&fit=crop&q=80',
@@ -294,12 +152,113 @@ const SEED_TECHNICIANS = [
     workGalleries: [],
     reviews: [
       {
-        id: 601,
+        id: 201,
         user: 'Tendai Mutasa',
         rating: 5,
         date: '2026-06-16',
         comment: 'Joina City is highly secure. Honest pricing, did the water damage recovery for my iPhone XR and it works fully now. No hidden charges.',
         aspects: { quality: 5, speed: 5, communication: 5, pricing: 5, professionalism: 5 }
+      }
+    ]
+  },
+  {
+    id: 3,
+    name: 'MobiFix Harare',
+    owner: 'Rumbi Kadzura',
+    profilePic: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
+    coverPic: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800&auto=format&fit=crop&q=80',
+    verified: true,
+    rating: 4.8,
+    reviewsCount: 156,
+    city: 'Harare',
+    location: 'Shop 7, Sam Levy\'s Village, Borrowdale, Harare',
+    coordinates: { lat: -17.7753, lng: 31.0784 },
+    whatsapp: '263778889900',
+    phone: '+263778889900',
+    experience: '5 years',
+    repairsCompleted: '1,200+',
+    specializations: ['Apple', 'Samsung', 'Infinix'],
+    responseSpeed: 'Responds within 10 mins',
+    workingHours: { weekday: '8:00 AM - 6:00 PM', Saturday: '9:00 AM - 4:00 PM', Sunday: 'Closed' },
+    workGalleries: [],
+    reviews: [
+      {
+        id: 301,
+        user: 'Kudzai Shumba',
+        rating: 5,
+        date: '2026-06-10',
+        comment: 'Repaired my Infinix Note battery quickly. They even gave me a 3-month warranty card. Great experience!',
+        aspects: { quality: 5, speed: 5, communication: 5, pricing: 5, professionalism: 5 }
+      },
+      {
+        id: 302,
+        user: 'Farai Dhliwayo',
+        rating: 4,
+        date: '2026-06-01',
+        comment: 'Original parts are a bit expensive but the repair quality is unmatched. Clean workshop at Sam Levy\'s.',
+        aspects: { quality: 5, speed: 4, communication: 4, pricing: 3, professionalism: 5 }
+      }
+    ]
+  },
+  {
+    id: 4,
+    name: 'QuickFix Tech',
+    owner: 'Tanaka Moyo',
+    profilePic: 'https://images.unsplash.com/photo-1628157582853-a796fa650a6a?w=150&auto=format&fit=crop&q=80',
+    coverPic: 'https://images.unsplash.com/photo-1601524909162-be87252be298?w=800&auto=format&fit=crop&q=80',
+    verified: true,
+    rating: 4.7,
+    reviewsCount: 89,
+    city: 'Harare',
+    location: '14 Jason Moyo Avenue, Harare CBD',
+    coordinates: { lat: -17.8322, lng: 31.0514 },
+    whatsapp: '263771234567',
+    phone: '+263771234567',
+    experience: '4 years',
+    repairsCompleted: '800+',
+    specializations: ['Tecno', 'Infinix', 'Xiaomi'],
+    responseSpeed: 'Responds within 7 mins',
+    workingHours: { weekday: '8:30 AM - 5:30 PM', Saturday: '9:00 AM - 1:00 PM', Sunday: 'Closed' },
+    workGalleries: [],
+    reviews: [
+      {
+        id: 401,
+        user: 'Mitchell Banda',
+        rating: 5,
+        date: '2026-06-05',
+        comment: 'Tanaka fixed a dead Tecno motherboard that two other shops said was beyond repair. Micro-soldering king!',
+        aspects: { quality: 5, speed: 4, communication: 4, pricing: 5, professionalism: 4 }
+      }
+    ]
+  },
+  {
+    id: 5,
+    name: 'Screen Masters ZW',
+    owner: 'Godwin Chirwa',
+    profilePic: 'https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?w=150&auto=format&fit=crop&q=80',
+    coverPic: 'https://images.unsplash.com/photo-1562408590-e32931084e23?w=800&auto=format&fit=crop&q=80',
+    verified: false,
+    rating: 4.6,
+    reviewsCount: 64,
+    city: 'Harare',
+    location: 'Belgravia Shopping Centre, Belgravia, Harare',
+    coordinates: { lat: -17.7936, lng: 31.0530 },
+    whatsapp: '263775556789',
+    phone: '+263775556789',
+    experience: '3 years',
+    repairsCompleted: '600+',
+    specializations: ['Infinix', 'Tecno', 'Samsung'],
+    responseSpeed: 'Responds within 8 mins',
+    workingHours: { weekday: '8:00 AM - 5:00 PM', Saturday: '8:00 AM - 12:00 PM', Sunday: 'Closed' },
+    workGalleries: [],
+    reviews: [
+      {
+        id: 501,
+        user: 'Rumbidzai Gondo',
+        rating: 5,
+        date: '2026-05-20',
+        comment: 'Affordable. Replaced my charging pin in 30 minutes. Coffee offered while you wait.',
+        aspects: { quality: 4, speed: 5, communication: 5, pricing: 5, professionalism: 4 }
       }
     ]
   }
@@ -320,10 +279,10 @@ function getLocalData(key, fallback) {
 }
 
 // Global mutable data references
-const techniciansDb = getLocalData('repairhub_technicians_v2', SEED_TECHNICIANS);
-const reviewSubmissions = getLocalData('repairhub_submissions_v2', []);
+const techniciansDb = getLocalData('repairhub_technicians_v3', SEED_TECHNICIANS);
+const reviewSubmissions = getLocalData('repairhub_submissions_v3', []);
 
 function saveToLocalStorage() {
-  localStorage.setItem('repairhub_technicians_v2', JSON.stringify(techniciansDb));
-  localStorage.setItem('repairhub_submissions_v2', JSON.stringify(reviewSubmissions));
+  localStorage.setItem('repairhub_technicians_v3', JSON.stringify(techniciansDb));
+  localStorage.setItem('repairhub_submissions_v3', JSON.stringify(reviewSubmissions));
 }

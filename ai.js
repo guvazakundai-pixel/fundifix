@@ -235,20 +235,14 @@ function buildContext(userInput) {
   });
 
   const cities = typeof CITY_COORDS !== 'undefined' ? Object.keys(CITY_COORDS) : [];
-  cities.forEach(c => {
-    if (lowerInput.includes(c.toLowerCase())) context += `\nUser is in ${c}.`;
-  });
 
   if (typeof techniciansDb !== 'undefined') {
-    const cityMatch = cities.find(c => lowerInput.includes(c.toLowerCase()));
-    if (cityMatch) {
-      const techsInCity = techniciansDb.filter(t => t.city === cityMatch);
-      if (techsInCity.length > 0) {
-        context += `\nTop technicians in ${cityMatch}:`;
-        techsInCity.slice(0, 3).forEach(t => {
-          context += `\n- [TECH_CARD:${t.id}] ${t.name}: ${t.rating}★, ${t.specializations.join('/')}, ${t.experience} exp, ${t.repairsCompleted} repairs, ${t.verified ? 'Verified ✅' : 'Unverified'}. Location: ${t.location}. WhatsApp: ${t.whatsapp}`;
-        });
-      }
+    const techsInCity = techniciansDb.filter(t => t.city === 'Harare');
+    if (lowerInput.includes('harare') || lowerInput.includes('zimbabwe') || lowerInput.includes('hw')) {
+      context += '\nTop technicians in Harare:';
+      techsInCity.slice(0, 3).forEach(t => {
+        context += `\n- [TECH_CARD:${t.id}] ${t.name}: ${t.rating}★, ${t.specializations.join('/')}, ${t.experience} exp, ${t.repairsCompleted} repairs, ${t.verified ? 'Verified ✅' : 'Unverified'}. Location: ${t.location}. WhatsApp: ${t.whatsapp}`;
+      });
     }
   }
 
@@ -304,28 +298,22 @@ function getSmartSuggestions(userInput) {
     if (!allText.match(/iphone|samsung|tecno|infinix|xiaomi|huawei|galaxy/)) {
       return ['iPhone', 'Samsung Galaxy', 'Tecno', 'Infinix'];
     }
-    if (!allText.match(/harare|nairobi|lagos|johannesburg|accra/)) {
-      return ['Harare', 'Nairobi', 'Lagos', 'Johannesburg'];
-    }
-    return ['How much will it cost?', 'Find a technician near me', 'Is it worth repairing?'];
+    return ['How much will it cost?', 'Find a technician in Harare', 'Is it worth repairing?'];
   }
   if (allText.includes('battery') || allText.includes('drain') || allText.includes('charging') || allText.includes('charge')) {
     if (!allText.match(/iphone|samsung|tecno|infinix|xiaomi|huawei|galaxy/)) {
       return ['iPhone', 'Samsung Galaxy', 'Tecno', 'Infinix'];
     }
-    if (!allText.match(/harare|nairobi|lagos|johannesburg|accra/)) {
-      return ['Harare', 'Nairobi', 'Lagos', 'Johannesburg'];
-    }
-    return ['How much will it cost?', 'Find a technician', 'Ask about warranty'];
+    return ['How much will it cost?', 'Find a technician in Harare', 'Ask about warranty'];
   }
   if (allText.includes('water') || allText.includes('wet')) {
-    return ['Can it be saved?', 'How much does water damage repair cost?', 'Find a technician', 'Is my data safe?'];
+    return ['Can it be saved?', 'How much does water damage repair cost?', 'Find a technician in Harare', 'Is my data safe?'];
   }
   if (lower.includes('price') || lower.includes('cost') || lower.includes('how much') || lower.includes('pricing')) {
-    return ['Screen repair cost', 'Battery replacement cost', 'Find a technician', 'View pricing guide'];
+    return ['Screen repair cost', 'Battery replacement cost', 'Find a technician in Harare', 'View pricing guide'];
   }
   if (lower.includes('technician') || lower.includes('repair') || lower.includes('fix') || lower.includes('find')) {
-    return ['Find technicians near me', 'How much will it cost?', 'View pricing guide', 'Ask something else'];
+    return ['Find technicians in Harare', 'How much will it cost?', 'View pricing guide', 'Ask something else'];
   }
   return ['My screen is cracked', 'Phone not charging', 'Battery draining fast', 'Water damage'];
 }

@@ -20,7 +20,7 @@ Guidelines:
 - IMPORTANT: At the END of EVERY response, you MUST include exactly 2 to 4 short, contextual follow-up suggestions as action buttons the user can tap next. Format them as: [SUGGESTIONS:option 1|option 2|option 3]
 - These suggestions MUST match the conversation context. Examples:
   - If user says "my screen is cracked" → suggest brand options: [SUGGESTIONS:iPhone|Samsung Galaxy|Tecno|Infinix]
-  - If user says "iPhone screen" → suggest cities: [SUGGESTIONS:Harare|Nairobi|Lagos|Johannesburg]
+  - If user says "iPhone screen" → suggest next steps: [SUGGESTIONS:How much will it cost?|Find a technician in Harare|Is it worth repairing?]
   - If discussing pricing → suggest next steps: [SUGGESTIONS:Find a technician|View pricing guide|Ask another question]
   - If user asks a general question → suggest specific topics: [SUGGESTIONS:Screen repair cost|Battery replacement|Water damage|Find a technician]
   - NEVER repeat suggestions the user has already acted on`;

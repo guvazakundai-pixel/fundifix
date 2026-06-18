@@ -5,11 +5,7 @@ let mapMarkers = [];
 let activeUser = JSON.parse(localStorage.getItem('repairhub_user_v2')) || null;
 
 const CITY_COORDS = {
-  'Harare': [-17.8252, 31.0530],
-  'Nairobi': [-1.2921, 36.8219],
-  'Lagos': [6.5244, 3.3792],
-  'Johannesburg': [-26.2041, 28.0473],
-  'Accra': [5.6037, -0.1870]
+  'Harare': [-17.8252, 31.0530]
 };
 
 const HERO_PHRASES = [
@@ -34,11 +30,11 @@ const SEARCH_EXAMPLES = [
 
 const TESTIMONIALS_DATA = [
   { name: 'Tatenda C.', role: 'Harare, Zimbabwe', text: 'Professional service! Replaced my Galaxy S23 Ultra screen in under 2 hours. Ephraim explains pricing transparently. Highly recommended.', stars: 5 },
-  { name: 'Amani W.', role: 'Nairobi, Kenya', text: 'Excellent service. They repaired my Infinix Note battery quickly. They even gave me a 3-month warranty card. Will use again!', stars: 5 },
-  { name: 'Chidi O.', role: 'Lagos, Nigeria', text: 'Chidi is the king of Tecno micro-soldering. Fixed a dead motherboard that three other shops said was unrepairable. Amazing work!', stars: 5 },
-  { name: 'Sipho N.', role: 'Johannesburg, SA', text: 'Specializes in iPhones. Completely pristine screen restoration. They only use certified refurbished or genuine pull-offs.', stars: 5 },
-  { name: 'Kofi M.', role: 'Accra, Ghana', text: 'Affordable and fast. Replaced my charging pin in 30 minutes. Coffee offered while you wait. Great experience!', stars: 4 },
+  { name: 'Nyasha M.', role: 'Harare, Zimbabwe', text: 'Very polite, clean workshop. They test the face ID and camera post-repair before asking for payment.', stars: 5 },
   { name: 'Tendai M.', role: 'Harare, Zimbabwe', text: 'Joina City is highly secure. Honest pricing, did the water damage recovery for my iPhone XR and it works fully now.', stars: 5 },
+  { name: 'Rumbi K.', role: 'Harare, Zimbabwe', text: 'Affordable and fast. Replaced my charging pin in 30 minutes. Great experience!', stars: 4 },
+  { name: 'Kudzai S.', role: 'Harare, Zimbabwe', text: 'Specializes in iPhones. Completely pristine screen restoration. Only uses certified refurbished or genuine parts.', stars: 5 },
+  { name: 'Farai D.', role: 'Harare, Zimbabwe', text: 'Repaired my Infinix Note battery quickly. They even gave me a 3-month warranty card. Will use again!', stars: 5 },
 ];
 
 let currentHeroIndex = 0;
