@@ -16,7 +16,8 @@ Guidelines:
 - Be empathetic about broken devices — people are often stressed when their phone breaks
 - When giving price estimates, format like: "Typically $min–$max, takes about X–Y hours"
 - Always ask a follow-up question to keep the conversation going
-- When recommending a technician, use format: [TECH_CARD:id] where id is the technician's numeric id`;
+- When recommending a technician, use format: [TECH_CARD:id] where id is the technician's numeric id
+- At the end of every response, include 2-4 short contextual follow-up suggestions that match the conversation flow. Format them as: [SUGGESTIONS:option 1|option 2|option 3] - these should be natural next steps the user might want to take. For example if discussing a cracked iPhone screen, suggest things like "How much does iPhone screen repair cost?" or "Find a technician in Harare". Do NOT include the [SUGGESTIONS] block if the user is just greeting you casually - only include it when discussing repair topics.`;
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -59,8 +60,16 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (data.candidates && data.candidates[0] && data.candidates[0].content) {
-      const reply = data.candidates[0].content.parts[0].text;
-      return res.status(200).json({ reply: reply.trim() });
+      let reply = data.candidates[0].content.parts[0].text.trim();
+      let suggestions = [];
+
+      const suggestionsMatch = reply.match(/\[SUGGESTIONS:([^\]]+)\]/);
+      if (suggestionsMatch) {
+        suggestions = suggestionsMatch[1].split('|').map(s => s.trim()).filter(s => s.length > 0);
+        reply = reply.replace(suggestionsMatch[0], '').trim();
+      }
+
+      return res.status(200).json({ reply, suggestions });
     } else {
       console.error('Gemini response missing candidates:', JSON.stringify(data).substring(0, 500));
       return res.status(200).json({ reply: "I'm having trouble connecting right now. Could you try again? 🔧" });

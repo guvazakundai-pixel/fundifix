@@ -184,7 +184,7 @@ async function handleUserInput(input) {
 
     if (data.reply) {
       chatHistory.push({ role: 'model', text: data.reply });
-      processGeminiReply(data.reply, input);
+      processGeminiReply(data.reply, input, data.suggestions || []);
     } else {
       addBotMessage("I'm having trouble connecting right now. Could you try again? 🔧");
       renderQuickReplies(MENDIE_INITIAL_SUGGESTIONS);
@@ -255,7 +255,7 @@ function buildContext(userInput) {
   return context;
 }
 
-function processGeminiReply(reply, userInput) {
+function processGeminiReply(reply, userInput, apiSuggestions) {
   const techCardRegex = /\[TECH_CARD:(\d+)\]/g;
   let match;
   const techCards = [];
@@ -284,7 +284,9 @@ function processGeminiReply(reply, userInput) {
       renderTechMatchCard(tech, tech.verified ? reason + ' Verified ✅' : reason);
     });
 
-    if (techCards.length === 0) {
+    if (apiSuggestions && apiSuggestions.length > 0) {
+      renderQuickReplies(apiSuggestions.slice(0, 4));
+    } else if (techCards.length === 0) {
       const suggestions = getSmartSuggestions(userInput);
       renderQuickReplies(suggestions);
     } else {
